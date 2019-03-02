@@ -13,8 +13,8 @@
 		AB6AB8DE2229367700C7AFE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB6AB8DD2229367700C7AFE1 /* Assets.xcassets */; };
 		AB6AB8E12229367700C7AFE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB6AB8DF2229367700C7AFE1 /* LaunchScreen.storyboard */; };
 		AB6AB8E42229367700C7AFE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6AB8E32229367700C7AFE1 /* main.m */; };
-		AB6AB8ED22294C1800C7AFE1 /* Granny.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6AB8EC22294C1800C7AFE1 /* Granny.m */; };
 		AB6AB8F022294C9C00C7AFE1 /* Grandson.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6AB8EF22294C9C00C7AFE1 /* Grandson.m */; };
+		ABA52F05222AAF9500762BBD /* Granny.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA52F04222AAF9500762BBD /* Granny.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,10 +29,10 @@
 		AB6AB8E22229367700C7AFE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB6AB8E32229367700C7AFE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB6AB8EA22294AD300C7AFE1 /* BorschDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BorschDelegate.h; sourceTree = "<group>"; };
-		AB6AB8EB22294C1800C7AFE1 /* Granny.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Granny.h; path = ../../../Granny.h; sourceTree = "<group>"; };
-		AB6AB8EC22294C1800C7AFE1 /* Granny.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Granny.m; path = ../../../Granny.m; sourceTree = "<group>"; };
 		AB6AB8EE22294C9C00C7AFE1 /* Grandson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Grandson.h; sourceTree = "<group>"; };
 		AB6AB8EF22294C9C00C7AFE1 /* Grandson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Grandson.m; sourceTree = "<group>"; };
+		ABA52F03222AAF9500762BBD /* Granny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Granny.h; sourceTree = "<group>"; };
+		ABA52F04222AAF9500762BBD /* Granny.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Granny.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +68,8 @@
 				AB6AB8EA22294AD300C7AFE1 /* BorschDelegate.h */,
 				AB6AB8EE22294C9C00C7AFE1 /* Grandson.h */,
 				AB6AB8EF22294C9C00C7AFE1 /* Grandson.m */,
-				AB6AB8EB22294C1800C7AFE1 /* Granny.h */,
-				AB6AB8EC22294C1800C7AFE1 /* Granny.m */,
+				ABA52F03222AAF9500762BBD /* Granny.h */,
+				ABA52F04222AAF9500762BBD /* Granny.m */,
 				AB6AB8D42229367300C7AFE1 /* AppDelegate.h */,
 				AB6AB8D52229367300C7AFE1 /* AppDelegate.m */,
 				AB6AB8D72229367300C7AFE1 /* ViewController.h */,
@@ -155,9 +155,9 @@
 			files = (
 				AB6AB8D92229367300C7AFE1 /* ViewController.m in Sources */,
 				AB6AB8E42229367700C7AFE1 /* main.m in Sources */,
-				AB6AB8ED22294C1800C7AFE1 /* Granny.m in Sources */,
 				AB6AB8D62229367300C7AFE1 /* AppDelegate.m in Sources */,
 				AB6AB8F022294C9C00C7AFE1 /* Grandson.m in Sources */,
+				ABA52F05222AAF9500762BBD /* Granny.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
