@@ -22,7 +22,7 @@
     NSInteger lunchStart = 14;
     NSInteger lunchFinish = 16;
 
-    if (currentHour >= lunchStart && currentHour < lunchFinish ) {
+    if (currentHour >= lunchStart && currentHour < lunchFinish) {
         NSLog(@"Время обеда! Внучок пошел есть борщ.");
         return YES;
     } else if (currentHour < lunchStart) {
