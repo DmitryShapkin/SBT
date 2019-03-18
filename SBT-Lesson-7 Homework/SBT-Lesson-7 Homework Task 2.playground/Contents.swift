@@ -12,10 +12,9 @@ import UIKit
 
 protocol BaseProtocol {
     associatedtype Element
-    associatedtype ReturnType
     var count: Int { get }
-    func append(_ value: Element)
-    subscript(index: Int) -> ReturnType { get }
+    mutating func append(_ value: Element) // just in case if we will use "struct" in the future
+    subscript(index: Int) -> Element { get }
 }
 
 /**
@@ -89,9 +88,9 @@ class LinkedList<T>: BaseProtocol {
     
     // Task 3 (возвращать элемент по индексу)
     
-    subscript(index: Int) -> T {
+    subscript(index: Int) -> Element {
         let node = self.node(at: index)
-        return node.value
+        return node
     }
     
     func node(at index: Int) -> Element {
@@ -111,14 +110,14 @@ class LinkedList<T>: BaseProtocol {
 }
 
 // Realization:
-var kaschenkoPatients = LinkedList<String>()
+let kaschenkoPatients = LinkedList<String>()
 kaschenkoPatients.append("Наталья морская пехота")
 kaschenkoPatients.append("Доктор Попов")
 kaschenkoPatients.append("Кандибобер")
 kaschenkoPatients.append("Дудь")
 
 print(kaschenkoPatients)
-print(kaschenkoPatients[0])
+print(kaschenkoPatients[0].value) // По индексу получаем элемент и далее его value
 print(kaschenkoPatients.head!.value) // using force unwrap just for sample
 print(kaschenkoPatients.last!.value) // using force unwrap just for sample
 print(kaschenkoPatients.count)

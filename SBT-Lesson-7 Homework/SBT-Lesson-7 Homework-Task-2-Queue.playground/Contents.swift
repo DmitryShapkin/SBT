@@ -13,36 +13,40 @@ import UIKit
 
 protocol BaseProtocol {
     associatedtype Element
-    associatedtype ReturnType
     var count: Int { get }
     mutating func append(_ value: Element)
-    subscript(index: Int) -> ReturnType { get }
+    subscript(index: Int) -> Element { get }
 }
 
 public struct Queue<T>: BaseProtocol {
+
+    typealias Element = T
+    
     fileprivate var array = [T]()
     
+    // Task 1 (сколько они содержат элементов):
     public var count: Int {
         return array.count
     }
     
-    public var isEmpty: Bool {
-        return array.isEmpty
+    // Task 2 (добавлять новые элементы)
+    mutating func append(_ value: Element) {
+        array.append(value)
     }
     
-    public mutating func enqueue(_ element: T) {
-        array.append(element)
-    }
-    
-    public mutating func dequeue() -> T? {
-        if isEmpty {
-            return nil
-        } else {
-            return array.removeFirst()
-        }
-    }
-    
-    public var front: T? {
-        return array.first
+    // Task 3 (возвращать элемент по индексу)
+    subscript(index: Int) -> Element {
+        return array[index]
     }
 }
+
+// Realization:
+var kaschenkoPatients = Queue<String>()
+kaschenkoPatients.append("Наталья морская пехота")
+kaschenkoPatients.append("Доктор Попов")
+kaschenkoPatients.append("Кандибобер")
+kaschenkoPatients.append("Дудь")
+
+print(kaschenkoPatients)
+print(kaschenkoPatients[0])
+print(kaschenkoPatients.count)
