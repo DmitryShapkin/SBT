@@ -13,7 +13,7 @@ import UIKit
 protocol BaseProtocol {
     associatedtype Element
     var count: Int { get }
-    mutating func append(_ value: Element) // just in case if we will use "struct" in the future
+    mutating func append(_ value: Element) // "mutating" - just in case if we will use "struct" in the future
     subscript(index: Int) -> Element { get }
 }
 
