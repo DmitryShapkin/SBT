@@ -14,7 +14,7 @@ protocol BaseProtocol {
     associatedtype Element
     associatedtype ReturnType
     var count: Int { get }
-    mutating func append(_ value: Element)
+    func append(_ value: Element)
     subscript(index: Int) -> ReturnType { get }
 }
 
@@ -23,7 +23,7 @@ protocol BaseProtocol {
  (based on BaseProtocol)
  */
 
-struct LinkedList<T>: BaseProtocol {
+class LinkedList<T>: BaseProtocol {
 
     class LinkedListNode<T> {
         var value: T
@@ -71,13 +71,13 @@ struct LinkedList<T>: BaseProtocol {
     // Task 2 (добавлять новые элементы)
     
     // Append to the end of Linked List:
-    mutating func append(_ value: T) {
+    func append(_ value: T) {
         let newNode = Element(value: value)
         append(newNode) // Call the function below
     }
     
     // Logic for append
-    mutating func append(_ node: Element) {
+    func append(_ node: Element) {
         let newNode = node
         if let lastNode = last {
             newNode.previous = lastNode
@@ -121,9 +121,8 @@ print(kaschenkoPatients)
 print(kaschenkoPatients[0])
 print(kaschenkoPatients.head!.value) // using force unwrap just for sample
 print(kaschenkoPatients.last!.value) // using force unwrap just for sample
+print(kaschenkoPatients.count)
 
-/**
- To create the same Linked List but as struct:
- 1. Just add to "append" func keyword "mutating" because this func change head (line 74, 80)
- 2. Change let to var (line 114)
- */
+// To create the same Linked List but as struct:
+// 1. Just add to "append" func keyword "mutating" because this func change head (line 74, 80)
+// 2. Change let to var (line 114)
