@@ -6,7 +6,9 @@
 //  Copyright © 2019 Dmitry Shapkin. All rights reserved.
 //
 
+
 #import "ViewController.h"
+
 
 @interface ViewController ()
 
@@ -14,20 +16,17 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor blackColor];
 }
 
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
     UITouch* touch = [touches anyObject];
-    
     CGPoint pointOnMainView = [touch locationInView:self.view];
-    
     CGFloat coordinateX = pointOnMainView.x;
-    
     CGFloat translateCoordinateX = coordinateX / self.view.frame.size.width;
     
     NSLog(@"%f", translateCoordinateX);

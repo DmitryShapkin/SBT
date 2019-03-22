@@ -6,7 +6,9 @@
 //  Copyright © 2019 Dmitry Shapkin. All rights reserved.
 //
 
+
 #import "ViewController.h"
+
 
 @interface ViewController ()
 
@@ -14,6 +16,7 @@
 @property (nonatomic, assign) CGPoint touchOffset;
 
 @end
+
 
 @implementation ViewController
 
@@ -27,46 +30,39 @@
     
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch* touch = [touches anyObject];
-    
     CGPoint pointOnMainView = [touch locationInView:self.view];
-    
     UIView* view = [self.view hitTest:pointOnMainView withEvent:event];
     
-    if (![view isEqual:self.view]) {
-        
+    if (![view isEqual:self.view])
+    {
         self.draggingView = view;
-        
         CGPoint touchPoint = [touch locationInView:self.draggingView];
-        
         self.touchOffset = CGPointMake(CGRectGetMidX(self.draggingView.bounds) - touchPoint.x,
                                        CGRectGetMidY(self.draggingView.bounds) - touchPoint.y);
-
-    } else {
-        
+    }
+    else
+    {
         self.draggingView = nil;
     }
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    if (self.draggingView) {
-        
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (self.draggingView)
+    {
         UITouch* touch = [touches anyObject];
-        
         CGPoint pointOnMainView = [touch locationInView:self.view];
-        
         CGPoint correction = CGPointMake(pointOnMainView.x + self.touchOffset.x,
                                          pointOnMainView.y + self.touchOffset.y);
-        
         self.draggingView.center = correction;
     }
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
     self.draggingView = nil;
 }
 
