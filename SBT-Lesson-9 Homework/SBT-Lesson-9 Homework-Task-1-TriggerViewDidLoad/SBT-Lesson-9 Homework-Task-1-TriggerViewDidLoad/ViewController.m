@@ -6,49 +6,22 @@
 //  Copyright © 2019 Dmitry Shapkin. All rights reserved.
 //
 
+
 #import "ViewController.h"
 
-@interface ViewController () <UINavigationControllerDelegate>
 
-@property (strong, nonatomic) UIView *myView;
+@interface ViewController ()
 
 @end
 
+
 @implementation ViewController
 
-- (instancetype)init
+- (void)viewDidLoad
 {
-    self = [super init];
-    if (self) {
-        NSLog(@"init");
-    }
-    return self;
-}
-
-- (void)loadView {
-    [super loadView];
-    //self.myView = self.view;
-    
-
-    
-    [self loadViewIfNeeded];
-    
-    NSLog(@"loadView");
-}
-
-- (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"%@", self.view.hidden ? @"TRUE" : @"FALSE");
-    
-    //[self.view bringSubviewToFront:self];
-    
-//    NSLog(@"viewDidLoad - %@", [[self navigationController] viewControllers]);
-//    NSLog(@"viewDidLoad visible - %@", [[self navigationController] visibleViewController]);
-//
     NSLog(@"viewDidLoad");
-    
-    NSLog(@"%@", NSStringFromCGRect(self.view.bounds) );
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -58,82 +31,60 @@
     myButton.frame = CGRectMake(self.view.center.x - 100, self.view.center.y - 30, 200.0, 60.0);
     myButton.backgroundColor = [UIColor redColor];
     [self.view addSubview:myButton];
-    
-    
-    NSLog(@"End of viewDidLoad");
-    
-    //[self.view layoutIfNeeded];
 }
 
-- (void)viewWillLayoutSubviews {
-    NSLog(@"viewWillLayoutSubviews");
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    
-    [self.view layoutIfNeeded];
-    [self.view layoutSubviews];
-    
-    NSLog(@"viewWillAppear");
-}
-
-- (void)triggerViewDidLoad {
+- (void)triggerViewDidLoad
+{
     NSLog(@"I'm triggering viewDidLoad");
-    
-//    NSLog(@"1 - %@", [[self navigationController] viewControllers]);
-//
-//    [[self navigationController] popToViewController:self animated:YES];
-//
-//    NSLog(@"2 - %@", [[self navigationController] viewControllers]);
-    
     
     self.view = nil;
     
+    /**
+     За следующую строчку большое спасибо Артему Балашову.
+     [[UIApplication sharedApplication].keyWindow addSubview:self.view];
+     Без этого ключевого момента я бы точно не дошел до этого решения.
+     
+     Я несколько часов пытался вывести на экран self.view, но безуспешно.
+     Постоянно был черный экран (self.window) и все мои попытки были тщетны,
+     но благодаря его подсказке я пришел, на мой взгляд, к правильному решению.
+     
+     В решении Артема есть небольшой нюанс:
+     Debug View Hierarchy отображает все элементы этого ViewController'а на одной плоскости и прямо в UIWindow
+     
+     Поэтому я подкорректировал глубину расположения нашей self.view
+     Если посмотреть как выглядит иерархия вьюх до того как мы "заниялем" self.view, то увидим следующее:
+     
+     - UIWindow (1)
+     -- UINavigationController (2)
+     --- UILayoutContainerView (3)
+     ---- UINavigationTransitionView (4)
+     ----- UIViewControllerWrapperView (5)
+     ------ ViewController (наш вьюконтроллер)
+     
+     Исходя из этой иерархии нам необходимо поместить нашу self.view вглубь на 5 уровней.
+     P.S. Для наглядности я пронумеровал каждый уровень.
+     */
 
+    // Уровень #1
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
     
-//    UIViewController *vc = [[ViewController alloc] init];
-//    [[self navigationController] pushViewController:vc animated:YES];
+    // Уровень #2
+    UIView *uiLayoutContainerView = [[window subviews] objectAtIndex:0];
     
-//    self.view;
+    // Уровень #3
+    UIView *uiNavigationTransitionView = [[uiLayoutContainerView subviews] objectAtIndex:0];
     
-    //self.view = self.myView;
-//
-//    NSLog(@"something");
-//
-    NSLog(@"%@", [[self navigationController] topViewController]);
-//
-//
-//
-//
-    self.view.backgroundColor = [UIColor greenColor];
+    // Уровень #4
+    UIView *uiViewControllerWrapperView = [[uiNavigationTransitionView subviews] objectAtIndex:0];
     
+    // Уровень #5
+    [uiViewControllerWrapperView addSubview:self.view];
     
+    /**
+     Проверяем расстановку вьюх в Debug View Hierarchy. Все отлично, все стоит на своих местах.
+     Practice makes perfect.
+     */
 }
-
-- (void)dealloc
-{
-    NSLog(@"dealloc");
-}
-
-
-
-
-
-
-#pragma mark - UINavigationControllerDelegate
-
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    NSLog(@"HERE");
-}
-
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    NSLog(@"HERE2");
-}
-
 
 
 @end
-
-

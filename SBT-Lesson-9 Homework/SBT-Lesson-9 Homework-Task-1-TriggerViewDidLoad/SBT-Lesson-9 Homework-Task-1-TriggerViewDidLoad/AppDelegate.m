@@ -6,8 +6,10 @@
 //  Copyright © 2019 Dmitry Shapkin. All rights reserved.
 //
 
+
 #import "AppDelegate.h"
 #import "ViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -25,16 +27,10 @@
     self.window.backgroundColor = [UIColor redColor];
     
     ViewController *viewController = [[ViewController alloc] init];
-    
     self.navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    
     self.window.rootViewController = self.navController;
-    
     [self.window makeKeyAndVisible];
-    
-    NSLog(@"%@", viewController);
-    NSLog(@"%@", self.window.rootViewController);
-    
+
     return YES;
 }
 
