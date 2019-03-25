@@ -52,8 +52,7 @@ class AnimalCollectionViewCell: UICollectionViewCell {
         return subtitleLabel
     }()
     
-    override init(frame: CGRect)
-    {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(containerView)
@@ -62,19 +61,16 @@ class AnimalCollectionViewCell: UICollectionViewCell {
         containerView.addSubview(someFactLabel)
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews()
-    {
+    override func layoutSubviews() {
         super.layoutSubviews()
         setupLayout()
     }
     
-    func setupLayout()
-    {
+    func setupLayout() {
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -97,8 +93,7 @@ class AnimalCollectionViewCell: UICollectionViewCell {
             ])
     }
     
-    override class var requiresConstraintBasedLayout: Bool
-    {
+    override class var requiresConstraintBasedLayout: Bool {
         return true
     }
 }

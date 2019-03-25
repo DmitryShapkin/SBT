@@ -10,13 +10,11 @@
 import UIKit
 
 
-protocol AnimalLayoutDelegate: class
-{
+protocol AnimalLayoutDelegate: class {
     func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat
 }
 
-class AnimalCollectionViewLayout: UICollectionViewLayout
-{
+class AnimalCollectionViewLayout: UICollectionViewLayout {
     weak var delegate: AnimalLayoutDelegate!
     
     fileprivate var numberOfColumns = 2
@@ -24,38 +22,32 @@ class AnimalCollectionViewLayout: UICollectionViewLayout
     fileprivate var cache = [UICollectionViewLayoutAttributes]()
     fileprivate var contentHeight: CGFloat = 0
     fileprivate var contentWidth: CGFloat {
-        guard let collectionView = collectionView else
-        {
+        guard let collectionView = collectionView else {
             return 0
         }
         let insets = collectionView.contentInset
         return collectionView.bounds.width - (insets.left + insets.right)
     }
     
-    override var collectionViewContentSize: CGSize
-    {
+    override var collectionViewContentSize: CGSize {
         return CGSize(width: contentWidth, height: contentHeight)
     }
     
-    override func prepare()
-    {
+    override func prepare() {
         
-        guard cache.isEmpty == true, let collectionView = collectionView else
-        {
+        guard cache.isEmpty == true, let collectionView = collectionView else {
             return
         }
         
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         var xOffset = [CGFloat]()
-        for column in 0 ..< numberOfColumns
-        {
+        for column in 0 ..< numberOfColumns {
             xOffset.append(CGFloat(column) * columnWidth)
         }
         var column = 0
         var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
         
-        for item in 0 ..< collectionView.numberOfItems(inSection: 0)
-        {
+        for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             
             let photoHeight = delegate.collectionView(collectionView, heightForPhotoAtIndexPath: indexPath)
@@ -74,21 +66,18 @@ class AnimalCollectionViewLayout: UICollectionViewLayout
         }
     }
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]?
-    {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
         
         for attributes in cache {
-            if attributes.frame.intersects(rect)
-            {
+            if attributes.frame.intersects(rect) {
                 visibleLayoutAttributes.append(attributes)
             }
         }
         return visibleLayoutAttributes
     }
     
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes?
-    {
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return cache[indexPath.item]
     }
 }

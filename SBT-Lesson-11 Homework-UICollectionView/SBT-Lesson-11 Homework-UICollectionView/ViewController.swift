@@ -10,8 +10,7 @@
 import UIKit
 
 
-class ViewController: UIViewController
-{
+class ViewController: UIViewController {
     fileprivate lazy var collectionView: UICollectionView = {
         
         let collectionViewLayout = AnimalCollectionViewLayout()
@@ -24,43 +23,35 @@ class ViewController: UIViewController
         return collectionView
     }()
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let layout = collectionView.collectionViewLayout as? AnimalCollectionViewLayout
-        {
+        if let layout = collectionView.collectionViewLayout as? AnimalCollectionViewLayout {
             layout.delegate = self
         }
         
-        if let patternImage = UIImage(named: "mybackground.png")
-        {
+        if let patternImage = UIImage(named: "mybackground.png") {
             view.backgroundColor = UIColor(patternImage: patternImage)
         }
         
         self.view.addSubview(collectionView)
     }
     
-    open override func viewDidLayoutSubviews()
-    {
+    open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.frame
     }
 }
 
-extension ViewController: UICollectionViewDataSource
-{
+extension ViewController: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return animalsData.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnimalCollectionViewCell", for: indexPath) as? AnimalCollectionViewCell
-        {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnimalCollectionViewCell", for: indexPath) as? AnimalCollectionViewCell {
             cell.animalNameLabel.text = animalsData[indexPath.item].name
             cell.someFactLabel.text = animalsData[indexPath.item].someFact
             cell.coverImageView.image = animalsData[indexPath.item].image
@@ -70,18 +61,15 @@ extension ViewController: UICollectionViewDataSource
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
         return CGSize(width: itemSize, height: itemSize)
     }
 }
 
-extension ViewController: AnimalLayoutDelegate
-{
+extension ViewController: AnimalLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView,
-                        heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat
-    {
+                        heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
         if let animalImage = animalsData[indexPath.item].image {
             return animalImage.size.height / 2
         }
