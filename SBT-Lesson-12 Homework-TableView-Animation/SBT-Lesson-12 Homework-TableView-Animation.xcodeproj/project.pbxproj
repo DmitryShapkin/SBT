@@ -9,10 +9,26 @@
 /* Begin PBXBuildFile section */
 		AB28843F224A027500F5B584 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB28843E224A027500F5B584 /* AppDelegate.m */; };
 		AB288442224A027500F5B584 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB288441224A027500F5B584 /* ViewController.m */; };
-		AB288445224A027500F5B584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB288443224A027500F5B584 /* Main.storyboard */; };
 		AB288447224A027800F5B584 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB288446224A027800F5B584 /* Assets.xcassets */; };
 		AB28844A224A027800F5B584 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB288448224A027800F5B584 /* LaunchScreen.storyboard */; };
 		AB28844D224A027800F5B584 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB28844C224A027800F5B584 /* main.m */; };
+		AB288464224A03D900F5B584 /* dog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB288454224A03D800F5B584 /* dog.jpg */; };
+		AB288465224A03D900F5B584 /* horse.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB288455224A03D800F5B584 /* horse.jpg */; };
+		AB288466224A03D900F5B584 /* cougar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB288456224A03D800F5B584 /* cougar.jpg */; };
+		AB288467224A03D900F5B584 /* camel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB288457224A03D800F5B584 /* camel.jpg */; };
+		AB288468224A03D900F5B584 /* kangaroo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB288458224A03D800F5B584 /* kangaroo.jpg */; };
+		AB288469224A03D900F5B584 /* raccoon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB288459224A03D800F5B584 /* raccoon.jpg */; };
+		AB28846A224A03D900F5B584 /* mybackground.png in Resources */ = {isa = PBXBuildFile; fileRef = AB28845A224A03D800F5B584 /* mybackground.png */; };
+		AB28846B224A03D900F5B584 /* wolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB28845B224A03D800F5B584 /* wolf.jpg */; };
+		AB28846C224A03D900F5B584 /* hamster.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB28845C224A03D800F5B584 /* hamster.jpg */; };
+		AB28846D224A03D900F5B584 /* sloth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB28845D224A03D800F5B584 /* sloth.jpg */; };
+		AB28846E224A03D900F5B584 /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB28845E224A03D800F5B584 /* cat.jpg */; };
+		AB28846F224A03D900F5B584 /* lizard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB28845F224A03D800F5B584 /* lizard.jpg */; };
+		AB288470224A03D900F5B584 /* pigeon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB288460224A03D800F5B584 /* pigeon.jpg */; };
+		AB288471224A03D900F5B584 /* fox.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB288461224A03D800F5B584 /* fox.jpg */; };
+		AB288472224A03D900F5B584 /* alpaca.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB288462224A03D800F5B584 /* alpaca.jpg */; };
+		AB288473224A03D900F5B584 /* llama.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB288463224A03D800F5B584 /* llama.jpg */; };
+		AB288476224A097100F5B584 /* AnimalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB288475224A097100F5B584 /* AnimalTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +37,28 @@
 		AB28843E224A027500F5B584 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AB288440224A027500F5B584 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AB288441224A027500F5B584 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AB288444224A027500F5B584 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB288446224A027800F5B584 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB288449224A027800F5B584 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB28844B224A027800F5B584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB28844C224A027800F5B584 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AB288454224A03D800F5B584 /* dog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog.jpg; sourceTree = "<group>"; };
+		AB288455224A03D800F5B584 /* horse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = horse.jpg; sourceTree = "<group>"; };
+		AB288456224A03D800F5B584 /* cougar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cougar.jpg; sourceTree = "<group>"; };
+		AB288457224A03D800F5B584 /* camel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = camel.jpg; sourceTree = "<group>"; };
+		AB288458224A03D800F5B584 /* kangaroo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kangaroo.jpg; sourceTree = "<group>"; };
+		AB288459224A03D800F5B584 /* raccoon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = raccoon.jpg; sourceTree = "<group>"; };
+		AB28845A224A03D800F5B584 /* mybackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mybackground.png; sourceTree = "<group>"; };
+		AB28845B224A03D800F5B584 /* wolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wolf.jpg; sourceTree = "<group>"; };
+		AB28845C224A03D800F5B584 /* hamster.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hamster.jpg; sourceTree = "<group>"; };
+		AB28845D224A03D800F5B584 /* sloth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sloth.jpg; sourceTree = "<group>"; };
+		AB28845E224A03D800F5B584 /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
+		AB28845F224A03D800F5B584 /* lizard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lizard.jpg; sourceTree = "<group>"; };
+		AB288460224A03D800F5B584 /* pigeon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pigeon.jpg; sourceTree = "<group>"; };
+		AB288461224A03D800F5B584 /* fox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fox.jpg; sourceTree = "<group>"; };
+		AB288462224A03D800F5B584 /* alpaca.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = alpaca.jpg; sourceTree = "<group>"; };
+		AB288463224A03D800F5B584 /* llama.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = llama.jpg; sourceTree = "<group>"; };
+		AB288474224A097100F5B584 /* AnimalTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimalTableViewCell.h; sourceTree = "<group>"; };
+		AB288475224A097100F5B584 /* AnimalTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimalTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +95,38 @@
 				AB28843E224A027500F5B584 /* AppDelegate.m */,
 				AB288440224A027500F5B584 /* ViewController.h */,
 				AB288441224A027500F5B584 /* ViewController.m */,
-				AB288443224A027500F5B584 /* Main.storyboard */,
+				AB288474224A097100F5B584 /* AnimalTableViewCell.h */,
+				AB288475224A097100F5B584 /* AnimalTableViewCell.m */,
 				AB288446224A027800F5B584 /* Assets.xcassets */,
 				AB288448224A027800F5B584 /* LaunchScreen.storyboard */,
 				AB28844B224A027800F5B584 /* Info.plist */,
 				AB28844C224A027800F5B584 /* main.m */,
+				AB288453224A03D800F5B584 /* Images */,
 			);
 			path = "SBT-Lesson-12 Homework-TableView-Animation";
+			sourceTree = "<group>";
+		};
+		AB288453224A03D800F5B584 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AB288454224A03D800F5B584 /* dog.jpg */,
+				AB288455224A03D800F5B584 /* horse.jpg */,
+				AB288456224A03D800F5B584 /* cougar.jpg */,
+				AB288457224A03D800F5B584 /* camel.jpg */,
+				AB288458224A03D800F5B584 /* kangaroo.jpg */,
+				AB288459224A03D800F5B584 /* raccoon.jpg */,
+				AB28845A224A03D800F5B584 /* mybackground.png */,
+				AB28845B224A03D800F5B584 /* wolf.jpg */,
+				AB28845C224A03D800F5B584 /* hamster.jpg */,
+				AB28845D224A03D800F5B584 /* sloth.jpg */,
+				AB28845E224A03D800F5B584 /* cat.jpg */,
+				AB28845F224A03D800F5B584 /* lizard.jpg */,
+				AB288460224A03D800F5B584 /* pigeon.jpg */,
+				AB288461224A03D800F5B584 /* fox.jpg */,
+				AB288462224A03D800F5B584 /* alpaca.jpg */,
+				AB288463224A03D800F5B584 /* llama.jpg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +186,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB288466224A03D900F5B584 /* cougar.jpg in Resources */,
+				AB288467224A03D900F5B584 /* camel.jpg in Resources */,
+				AB28846D224A03D900F5B584 /* sloth.jpg in Resources */,
+				AB288471224A03D900F5B584 /* fox.jpg in Resources */,
+				AB28846C224A03D900F5B584 /* hamster.jpg in Resources */,
+				AB28846B224A03D900F5B584 /* wolf.jpg in Resources */,
+				AB288473224A03D900F5B584 /* llama.jpg in Resources */,
+				AB288464224A03D900F5B584 /* dog.jpg in Resources */,
+				AB288469224A03D900F5B584 /* raccoon.jpg in Resources */,
 				AB28844A224A027800F5B584 /* LaunchScreen.storyboard in Resources */,
+				AB288465224A03D900F5B584 /* horse.jpg in Resources */,
+				AB28846F224A03D900F5B584 /* lizard.jpg in Resources */,
+				AB288468224A03D900F5B584 /* kangaroo.jpg in Resources */,
+				AB288470224A03D900F5B584 /* pigeon.jpg in Resources */,
+				AB288472224A03D900F5B584 /* alpaca.jpg in Resources */,
+				AB28846A224A03D900F5B584 /* mybackground.png in Resources */,
 				AB288447224A027800F5B584 /* Assets.xcassets in Resources */,
-				AB288445224A027500F5B584 /* Main.storyboard in Resources */,
+				AB28846E224A03D900F5B584 /* cat.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB288442224A027500F5B584 /* ViewController.m in Sources */,
+				AB288476224A097100F5B584 /* AnimalTableViewCell.m in Sources */,
 				AB28844D224A027800F5B584 /* main.m in Sources */,
 				AB28843F224A027500F5B584 /* AppDelegate.m in Sources */,
 			);
@@ -150,14 +224,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AB288443224A027500F5B584 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB288444224A027500F5B584 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AB288448224A027800F5B584 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
