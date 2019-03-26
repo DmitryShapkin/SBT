@@ -9,6 +9,7 @@
 
 #import "ViewController.h"
 #import "AnimalTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -92,12 +93,27 @@
     return UITableViewAutomaticDimension;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cells forRowAtIndexPath:(NSIndexPath *)indexPath
+/**
+ Анимация для ячеек.
+    1. Ячейки "выпрыгивают" справа налево.
+    2. Добавил вылет чуть сверху-справа.
+    3. Добавил поворот.
+ */
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cells.alpha = 0.0;
-    [UIView animateWithDuration:0.4 animations:^{
-        cells.alpha = 1.0;
-    }];
+    UIView *cellContentView  = [cell contentView];
+    CGFloat rotationAngleDegrees = -30;
+    CGFloat rotationAngleRadians = rotationAngleDegrees * (M_PI/180);
+    CGPoint offsetPositioning = CGPointMake(500, -20.0);
+    CATransform3D transform = CATransform3DIdentity;
+    transform = CATransform3DRotate(transform, rotationAngleRadians, 0.0, 0.0, 1.0);
+    transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y, -50.0);
+    cellContentView.layer.transform = transform;
+    
+    [UIView animateWithDuration:.65 delay:0.0 usingSpringWithDamping:0.85 initialSpringVelocity:.8 options:0 animations:^{
+        cellContentView.layer.transform = CATransform3DIdentity;
+    } completion: nil];
 }
 
 

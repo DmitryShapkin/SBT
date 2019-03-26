@@ -25,7 +25,6 @@
     UIViewController *vc = [[ViewController alloc] init];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
