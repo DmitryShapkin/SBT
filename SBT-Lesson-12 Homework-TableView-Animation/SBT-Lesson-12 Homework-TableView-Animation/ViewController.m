@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray<NSString *> *animalNames;
 @property (nonatomic, strong) NSDictionary<NSString *, NSString *> *animalFacts;
 @property (nonatomic, strong) NSDictionary<NSString *, UIImage *> *animalImages;
+@property (nonatomic, strong) CAGradientLayer *gradientLayer;
 
 @end
 
@@ -28,18 +29,36 @@
 {
     [super viewDidLoad];
 
-    [self changeLayer];
-
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.view.contentMode = UIViewContentModeRedraw;
     //self.tableView.rowHeight = 120.f;
     
     [self.tableView registerClass:[AnimalTableViewCell class] forCellReuseIdentifier:NSStringFromClass([AnimalTableViewCell class])];
     [self.view addSubview:self.tableView];
     
     [self createAnimals];
+    [self changeLayer];
+    [self setupLayout];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.gradientLayer.frame = self.view.bounds;
+}
+
+- (void)setupLayout
+{
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    [NSLayoutConstraint activateConstraints:@[
+          [self.tableView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+          [self.tableView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+          [self.tableView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+          [self.tableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
+    ]];
 }
 
 - (void)changeLayer
@@ -49,12 +68,11 @@
     UIColor *bottomColor = [UIColor colorWithRed:136.0/255.0 green:172.0/255.0 blue:180.0/255.0 alpha:1.0];
     
     // Создадим градиент
-    CAGradientLayer *theViewGradient = [CAGradientLayer layer];
-    theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
-    theViewGradient.frame = self.view.bounds;
+    self.gradientLayer = [CAGradientLayer layer];
+    self.gradientLayer.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
     
     // Добавим градиент на вью
-    [self.view.layer insertSublayer:theViewGradient atIndex:0];
+    [self.view.layer insertSublayer:self.gradientLayer atIndex:0];
 }
 
 
@@ -159,6 +177,7 @@
           @"Лама": [UIImage imageNamed:@"llama.jpg"]
     };
 }
+
 
 @end
 

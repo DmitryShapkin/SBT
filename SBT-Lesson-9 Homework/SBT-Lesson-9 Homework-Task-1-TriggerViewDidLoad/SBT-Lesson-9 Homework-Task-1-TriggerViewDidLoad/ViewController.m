@@ -39,21 +39,7 @@
     
     self.view = nil;
     
-    /**
-     За следующую строчку большое спасибо Артему Балашову.
-     [[UIApplication sharedApplication].keyWindow addSubview:self.view];
-     Без этого ключевого момента я бы точно не дошел до этого решения.
-     
-     Я несколько часов пытался вывести на экран self.view, но безуспешно.
-     Постоянно был черный экран (self.window) и все мои попытки были тщетны,
-     но благодаря его подсказке я пришел, на мой взгляд, к правильному решению.
-     
-     В решении Артема есть небольшой нюанс:
-     Debug View Hierarchy отображает все элементы этого ViewController'а на одной плоскости и прямо в UIWindow
-     
-     Поэтому я подкорректировал глубину расположения нашей self.view
-     Если посмотреть как выглядит иерархия вьюх до того как мы "заниялем" self.view, то увидим следующее:
-     
+   /**
      - UIWindow (1)
      -- UINavigationController (2)
      --- UILayoutContainerView (3)
@@ -79,11 +65,6 @@
     
     // Уровень #5
     [uiViewControllerWrapperView addSubview:self.view];
-    
-    /**
-     Проверяем расстановку вьюх в Debug View Hierarchy. Все отлично, все стоит на своих местах.
-     Practice makes perfect.
-     */
 }
 
 
