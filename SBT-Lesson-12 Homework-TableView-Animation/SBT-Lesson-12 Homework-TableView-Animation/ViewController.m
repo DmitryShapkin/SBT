@@ -95,6 +95,10 @@
     cell.subtitileLabel.text = someFact;
     cell.coverImageView.image = image;
     
+    UIView *backgroundView = [UIView new];
+    backgroundView.backgroundColor = [UIColor redColor];
+    cell.selectedBackgroundView = backgroundView;
+    
     return cell;
 }
 
