@@ -8,24 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		AB0A3699225B456E00DAB08C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A3698225B456E00DAB08C /* AppDelegate.m */; };
-		AB0A369C225B456E00DAB08C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A369B225B456E00DAB08C /* ViewController.m */; };
-		AB0A369F225B456E00DAB08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0A369D225B456E00DAB08C /* Main.storyboard */; };
 		AB0A36A1225B457300DAB08C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0A36A0225B457300DAB08C /* Assets.xcassets */; };
 		AB0A36A4225B457300DAB08C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0A36A2225B457300DAB08C /* LaunchScreen.storyboard */; };
 		AB0A36A7225B457300DAB08C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36A6225B457300DAB08C /* main.m */; };
+		AB0A36B0225B532500DAB08C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36AF225B532500DAB08C /* GameViewController.m */; };
+		AB0A36B3225B7C3F00DAB08C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36B2225B7C3F00DAB08C /* SettingsViewController.m */; };
+		AB0A36B6225B7CCD00DAB08C /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36B5225B7CCD00DAB08C /* StatsViewController.m */; };
+		AB0A36BA225B902200DAB08C /* SberPongTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36B9225B902200DAB08C /* SberPongTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AB0A3694225B456E00DAB08C /* SberPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SberPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0A3697225B456E00DAB08C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AB0A3698225B456E00DAB08C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AB0A369A225B456E00DAB08C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AB0A369B225B456E00DAB08C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AB0A369E225B456E00DAB08C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB0A36A0225B457300DAB08C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB0A36A3225B457300DAB08C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB0A36A5225B457300DAB08C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB0A36A6225B457300DAB08C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AB0A36AE225B532500DAB08C /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		AB0A36AF225B532500DAB08C /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		AB0A36B1225B7C3F00DAB08C /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		AB0A36B2225B7C3F00DAB08C /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		AB0A36B4225B7CCD00DAB08C /* StatsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
+		AB0A36B5225B7CCD00DAB08C /* StatsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
+		AB0A36B8225B902200DAB08C /* SberPongTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SberPongTableView.h; sourceTree = "<group>"; };
+		AB0A36B9225B902200DAB08C /* SberPongTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SberPongTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,15 +67,124 @@
 			children = (
 				AB0A3697225B456E00DAB08C /* AppDelegate.h */,
 				AB0A3698225B456E00DAB08C /* AppDelegate.m */,
-				AB0A369A225B456E00DAB08C /* ViewController.h */,
-				AB0A369B225B456E00DAB08C /* ViewController.m */,
-				AB0A369D225B456E00DAB08C /* Main.storyboard */,
+				AB3E3A65225BE23E00A59AAB /* Game */,
+				AB3E3A61225BE20F00A59AAB /* Statistics */,
+				AB3E3A5D225BE1E900A59AAB /* Settings */,
+				AB3E3A5C225BE12000A59AAB /* Supporting files */,
+			);
+			path = SberPong;
+			sourceTree = "<group>";
+		};
+		AB3E3A5C225BE12000A59AAB /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
 				AB0A36A0225B457300DAB08C /* Assets.xcassets */,
 				AB0A36A2225B457300DAB08C /* LaunchScreen.storyboard */,
 				AB0A36A5225B457300DAB08C /* Info.plist */,
 				AB0A36A6225B457300DAB08C /* main.m */,
 			);
-			path = SberPong;
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		AB3E3A5D225BE1E900A59AAB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AB3E3A60225BE20800A59AAB /* Model */,
+				AB3E3A5F225BE20300A59AAB /* View */,
+				AB3E3A5E225BE1FC00A59AAB /* Controller */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		AB3E3A5E225BE1FC00A59AAB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AB0A36B1225B7C3F00DAB08C /* SettingsViewController.h */,
+				AB0A36B2225B7C3F00DAB08C /* SettingsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AB3E3A5F225BE20300A59AAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB3E3A60225BE20800A59AAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB3E3A61225BE20F00A59AAB /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				AB3E3A64225BE22900A59AAB /* Model */,
+				AB3E3A63225BE22300A59AAB /* View */,
+				AB3E3A62225BE21C00A59AAB /* Controller */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		AB3E3A62225BE21C00A59AAB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AB0A36B4225B7CCD00DAB08C /* StatsViewController.h */,
+				AB0A36B5225B7CCD00DAB08C /* StatsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AB3E3A63225BE22300A59AAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB3E3A64225BE22900A59AAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB3E3A65225BE23E00A59AAB /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				AB3E3A68225BE24D00A59AAB /* Model */,
+				AB3E3A67225BE24900A59AAB /* View */,
+				AB3E3A66225BE24300A59AAB /* Controller */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		AB3E3A66225BE24300A59AAB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AB0A36AE225B532500DAB08C /* GameViewController.h */,
+				AB0A36AF225B532500DAB08C /* GameViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AB3E3A67225BE24900A59AAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB0A36B8225B902200DAB08C /* SberPongTableView.h */,
+				AB0A36B9225B902200DAB08C /* SberPongTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB3E3A68225BE24D00A59AAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +246,6 @@
 			files = (
 				AB0A36A4225B457300DAB08C /* LaunchScreen.storyboard in Resources */,
 				AB0A36A1225B457300DAB08C /* Assets.xcassets in Resources */,
-				AB0A369F225B456E00DAB08C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +256,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB0A369C225B456E00DAB08C /* ViewController.m in Sources */,
+				AB0A36BA225B902200DAB08C /* SberPongTableView.m in Sources */,
+				AB0A36B0225B532500DAB08C /* GameViewController.m in Sources */,
+				AB0A36B6225B7CCD00DAB08C /* StatsViewController.m in Sources */,
+				AB0A36B3225B7C3F00DAB08C /* SettingsViewController.m in Sources */,
 				AB0A36A7225B457300DAB08C /* main.m in Sources */,
 				AB0A3699225B456E00DAB08C /* AppDelegate.m in Sources */,
 			);
@@ -150,14 +268,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AB0A369D225B456E00DAB08C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB0A369E225B456E00DAB08C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AB0A36A2225B457300DAB08C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,7 +397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N52WYVQTKK;
-				INFOPLIST_FILE = SberPong/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SberPong/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +414,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N52WYVQTKK;
-				INFOPLIST_FILE = SberPong/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SberPong/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

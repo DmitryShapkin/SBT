@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  StatsViewController.h
 //  SberPong
 //
 //  Created by Dmitry Shapkin on 08/04/2019.
@@ -10,9 +10,10 @@
 @import UIKit;
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+NS_ASSUME_NONNULL_BEGIN
 
-@property (strong, nonatomic) UIWindow *window;
+@interface StatsViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

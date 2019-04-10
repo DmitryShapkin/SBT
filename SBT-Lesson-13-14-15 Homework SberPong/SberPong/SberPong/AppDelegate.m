@@ -6,46 +6,77 @@
 //  Copyright © 2019 Dmitry Shapkin. All rights reserved.
 //
 
+
 #import "AppDelegate.h"
+#import "SettingsViewController.h"
+#import "GameViewController.h"
+#import "StatsViewController.h"
+
+
+
+
 
 @interface AppDelegate ()
 
 @end
 
+
 @implementation AppDelegate
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = UIColor.redColor;
+    self.window.layer.cornerRadius = 3.f;
+    self.window.layer.masksToBounds = YES;
+    
+    [self setupTabBar];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+- (void)setupTabBar
+{
+    UIColor *graySberColor = [UIColor colorWithRed:53.0/255.0 green:56.0/255.0 blue:65.0/255.0 alpha:1];
+    UIColor *greenSberColor = [UIColor colorWithRed:20.0/255.0 green:188.0/255.0 blue:77.0/255.0 alpha:1];
+    
+    SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
+    settingsViewController.tabBarItem.title = @"Настройки";
+    settingsViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
+    
+    StatsViewController *statsViewController = [[StatsViewController alloc] init];
+    statsViewController.tabBarItem.title = @"Рейтинг";
+    statsViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
+    
+    GameViewController *gameViewController = [[GameViewController alloc] init];
+    gameViewController.tabBarItem.title = @"Играть";
+    gameViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
+    
+//    GameViewController *pauseViewController = [[GameViewController alloc] init];
+//    pauseViewController.tabBarItem.title = @"Пауза";
+//    pauseViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
+//
+//    GameViewController *playViewController = [[GameViewController alloc] init];
+//    playViewController.tabBarItem.title = @"Продолжить";
+//    playViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
+    
+    NSArray *viewControllerArray = @[gameViewController];
+    
+    for (UIViewController *viewController in viewControllerArray)
+    {
+        viewController.tabBarItem.titlePositionAdjustment = UIOffsetMake(0.0, -4.0);
+        [viewController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor], NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
+    }
+    
+    UITabBarController *tabBarViewController = [[UITabBarController alloc] init];
+    tabBarViewController.tabBar.translucent = NO;
+    tabBarViewController.tabBar.tintColor = greenSberColor;
+    tabBarViewController.tabBar.barTintColor = graySberColor;
+    tabBarViewController.viewControllers = viewControllerArray;
+    tabBarViewController.selectedIndex = 2;
+    
+    self.window.rootViewController = tabBarViewController;
 }
-
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-}
-
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
 
 @end
