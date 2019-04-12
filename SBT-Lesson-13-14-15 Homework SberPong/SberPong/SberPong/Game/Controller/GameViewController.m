@@ -17,16 +17,31 @@
 @property (nonatomic, strong) SberPongTableView *greenTableView;
 @property (nonatomic, strong) UIButton *pauseButton;
 @property (nonatomic, assign) BOOL isPauseOn;
-@property (strong, nonatomic) NSTimer * timer;
+@property (nonatomic, strong) NSTimer * timer;
 @property (nonatomic) float dx;
 @property (nonatomic) float dy;
 @property (nonatomic) float speed;
 
 @end
 
+
 @implementation GameViewController
 
 int level = 1;
+
+- (void)dealloc
+{
+    NSLog(@"dealloc GameViewController");
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        NSLog(@"init GameViewController");
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -34,15 +49,21 @@ int level = 1;
     [self createUserInterface];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    [self newGame];
+    NSLog(@"viewWillDisappear");
+    
+    if (!self.isPauseOn && !self.pauseButton.isHidden)
+    {
+        NSLog(@"Состояние для игрового процесса с выключенной паузой");
+        [self pauseButtonPressed:self.pauseButton];
+    }
 }
-
 
 - (void)createUserInterface
 {
+    UIColor *lightGraySberColor = [UIColor colorWithRed:240.0/255.0 green:243.0/255.0 blue:252.0/255.0 alpha:1];
+    self.view.backgroundColor = lightGraySberColor;
     self.maxScore = 5;
     
     [self setupSberPongTable];
@@ -52,24 +73,22 @@ int level = 1;
 - (void)setupSberPongTable
 {
     UIColor *greenSberColor = [UIColor colorWithRed:20.0/255.0 green:188.0/255.0 blue:77.0/255.0 alpha:1];
-    UIColor *lightGraySberColor = [UIColor colorWithRed:240.0/255.0 green:243.0/255.0 blue:252.0/255.0 alpha:1];
-    
     CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
+    CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     
     self.greenTableView = [[SberPongTableView alloc] init];
     self.greenTableView.backgroundColor = greenSberColor;
-
+    self.greenTableView.isFlipped = NO;
+    self.greenTableView.delegate = self;
     self.greenTableView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.greenTableView];
 
     [NSLayoutConstraint activateConstraints:@[
-      [self.greenTableView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20 + tabBarHeight],
+      [self.greenTableView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:10 + tabBarHeight + statusBarHeight],
       [self.greenTableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
       [self.greenTableView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
       [self.greenTableView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
     ]];
-
-    self.view.backgroundColor = lightGraySberColor;
 }
 
 - (void)setupPauseButton
@@ -77,13 +96,13 @@ int level = 1;
     UIColor *blueSberColor = [UIColor colorWithRed:222.0/255.0 green:226.0/255.0 blue:237.0/255.0 alpha:1];
     
     self.pauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.pauseButton setHidden:YES];
     self.pauseButton.contentEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 30);
     self.pauseButton.backgroundColor = blueSberColor;
     self.pauseButton.layer.cornerRadius = 20.f;
     [self.pauseButton setTitle:@"Пауза" forState:UIControlStateNormal];
     [self.pauseButton setTitleColor:[UIColor colorWithRed:47.0/255.0 green:51.0/255.0 blue:63.0/255.0 alpha:1] forState:UIControlStateNormal];
-    [self.pauseButton addTarget:self action:@selector(pauseButtonPressed:event:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [self.pauseButton addTarget:self action:@selector(pauseButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.pauseButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.pauseButton];
     
@@ -97,10 +116,11 @@ int level = 1;
 
 #pragma mark - Actions
 
-- (void)pauseButtonPressed:(UIButton*)button event:(UIEvent*) event
+- (void)pauseButtonPressed:(UIButton*)button
 {
     if (!self.isPauseOn)
     {
+        NSLog(@"Поставили на паузу");
         self.isPauseOn = YES;
         [button setTitle:@"Продолжить" forState:UIControlStateNormal];
         [self.timer invalidate];
@@ -113,6 +133,7 @@ int level = 1;
     }
     else
     {
+        NSLog(@"Сняли с паузы");
         self.isPauseOn = NO;
         [button setTitle:@"Пауза" forState:UIControlStateNormal];
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(moveBall) userInfo:nil repeats:YES];
@@ -124,65 +145,53 @@ int level = 1;
     }
 }
 
-
-#pragma mark - Touches
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+- (void)flipTableView:(SberPongTableView*)table
 {
-    UITouch *touch = touches.anyObject;
-    CGPoint currentPoint = [touch locationInView:self.greenTableView];
-    
-    [UIView animateWithDuration:0.3f animations:^{
-        self.greenTableView.paddleBottom.center = CGPointMake(currentPoint.x, self.greenTableView.paddleBottom.center.y);
-    }];
-    
-    
-}
-
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = touches.anyObject;
-    CGPoint currentPoint = [touch locationInView:self.greenTableView];
-
-    //self.paddleBottom.center = correction;
-
-    if (currentPoint.x >= self.greenTableView.frame.size.width - 45.0)
-    {
-        self.greenTableView.paddleBottom.center = CGPointMake(self.greenTableView.frame.size.width - 45.0, self.greenTableView.frame.size.height - 26);
-    }
-    else if (currentPoint.x <= 45.0)
-    {
-        self.greenTableView.paddleBottom.center = CGPointMake(45.0, self.greenTableView.frame.size.height - 26);
-    }
-    else
-    {
-        self.greenTableView.paddleBottom.center = CGPointMake(currentPoint.x, self.greenTableView.frame.size.height - 26);
-    }
-}
-
-- (void)displayMessage:(NSString *)message
-{
-    [self stop];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"СберПонг" message:message preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Принято" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-        if ([self gameOver]) {
-            [self newGame];
-            return;
+    [UIView transitionWithView:table duration:2.0 options:UIViewAnimationOptionTransitionFlipFromRight|UIViewAnimationOptionCurveEaseInOut animations:^{
+        table.isFlipped = !table.isFlipped;
+        
+        if (!table.isFlipped)
+        {
+            NSLog(@"messageView NO - далее скрываем кнопку Пауза");
+            [self.greenTableView.messageView setHidden:NO];
+            [self.pauseButton setHidden:YES];
         }
-        [self reset];
-        [self start];
-    }];
-    [alertController addAction:action];
-    [self presentViewController:alertController animated:YES completion:nil];
+        else
+        {
+            NSLog(@"messageView YES - далее показываем кнопку Пауза");
+            [self.greenTableView.messageView setHidden:YES];
+        }
+    } completion:nil];
 }
+
+- (void)startStopGameProcess
+{
+    NSLog(@"startStopGameProcess");
+    [self stop];
+    
+    if ([self gameOver]) {
+        NSLog(@"Игра окончена");
+        [self flipTableView:self.greenTableView];
+        return;
+    }
+    [self resetDirection];
+    [self startTimer];
+}
+
+
+#pragma mark - StartNewGameProtocol
 
 - (void)newGame
 {
-    [self reset];
+    NSLog(@"New game");
+    [self resetDirection];
     self.greenTableView.scoreTop.text = @"0";
     self.greenTableView.scoreBottom.text = @"0";
-    NSString *nextLevel =  [@"Уровень " stringByAppendingString: [NSString stringWithFormat: @"%d", level]] ;
-    [self displayMessage: [nextLevel stringByAppendingString: @"\n\nВы готовы?"]];
+    [self.greenTableView.messageView setHidden:YES];
+    [self flipTableView:self.greenTableView];
+    [self.pauseButton setHidden:NO];
+    
+    [self performSelector:@selector(startStopGameProcess) withObject:nil afterDelay:2.0 ];
 }
 
 - (int)gameOver
@@ -198,17 +207,16 @@ int level = 1;
     return 0;
 }
 
-- (void)start
+- (void)startTimer
 {
-    //self.greenTableView.ball.center = CGPointMake(CGRectGetMidX(self.greenTableView.bounds), CGRectGetMidY(self.greenTableView.bounds));
-    if (!_timer)
+    if (!self.timer)
     {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(moveBall) userInfo:nil repeats:YES];
     }
     self.greenTableView.ball.hidden = NO;
 }
 
-- (void)reset
+- (void)resetDirection
 {
     if (arc4random() % 2) {
         self.dx = -1;
@@ -241,9 +249,9 @@ int level = 1;
 {
     self.greenTableView.ball.center = CGPointMake(self.greenTableView.ball.center.x + self.dx * self.speed, self.greenTableView.ball.center.y + self.dy * self.speed);
     
-    [self checkCollision:CGRectMake(0, 0, 0, self.greenTableView.bounds.size.height) X:fabs(_dx) Y:0];
+    [self checkCollision:CGRectMake(0, 0, 0, self.greenTableView.bounds.size.height) X:fabs(self.dx) Y:0];
     
-    [self checkCollision:CGRectMake(self.greenTableView.bounds.size.width, 0, 20, self.greenTableView.bounds.size.height) X:-fabs(_dx) Y:0];
+    [self checkCollision:CGRectMake(self.greenTableView.bounds.size.width, 0, 20, self.greenTableView.bounds.size.height) X:-fabs(self.dx) Y:0];
     
     if ([self checkCollision:self.greenTableView.paddleTop.frame X:(self.greenTableView.ball.center.x - self.greenTableView.paddleTop.center.x) / 32.0 Y:1]) {
         [self increaseSpeed];
@@ -277,35 +285,24 @@ int level = 1;
 
 - (void)computerPlayer
 {
-    
-    // super player
-    //_paddleTop.center = CGPointMake(self.ball.center.x, self.paddleTop.center.y);
-    
-    // ordinary player
-    /*
-     if (self.ball.center.y < self.view.bounds.size.height/2) {
-     if (self.ball.center.x > self.paddleTop.center.x){
-     self.paddleTop.center = CGPointMake(self.paddleTop.center.x + arc4random_uniform(self.speed), self.paddleTop.center.y);
-     } else {
-     self.paddleTop.center = CGPointMake(self.paddleTop.center.x - arc4random_uniform(self.speed), self.paddleTop.center.y);
-     }
-     }
-     */
-    
-    // level player
-    if (self.greenTableView.ball.center.y < self.view.bounds.size.height / 2) {
-        if (self.greenTableView.ball.center.x > self.greenTableView.paddleTop.center.x){
+    if (self.greenTableView.ball.center.y < self.greenTableView.bounds.size.height / 2)
+    {
+        if (self.greenTableView.ball.center.x > self.greenTableView.paddleTop.center.x)
+        {
             self.greenTableView.paddleTop.center = CGPointMake(self.greenTableView.paddleTop.center.x + level, self.greenTableView.paddleTop.center.y);
-        } else {
+        }
+        else
+        {
             self.greenTableView.paddleTop.center = CGPointMake(self.greenTableView.paddleTop.center.x - level, self.greenTableView.paddleTop.center.y);
         }
     }
-    
 }
 
 - (BOOL)addScore
 {
-    if (self.greenTableView.ball.center.y < 0 || self.greenTableView.ball.center.y >= self.view.bounds.size.height) {
+    // Coming soon - реализую чуть попозже
+    if (self.greenTableView.ball.center.y < 0 || self.greenTableView.ball.center.y >= self.view.bounds.size.height)
+    {
         int s1 = [self.greenTableView.scoreTop.text intValue];
         int s2 = [self.greenTableView.scoreBottom.text intValue];
         
@@ -316,29 +313,48 @@ int level = 1;
         int gameOver = [self gameOver];
         if (gameOver)
         {
-            [self upgradeLevelForResult: gameOver];
-            [self displayMessage:[NSString stringWithFormat:@"Игрок %i выиграл!", gameOver]];
+            [self startStopGameProcess];
         }
         else
         {
-            [self reset];
+            [self resetDirection];
         }
-        
         return YES;
     }
     return NO;
 }
 
--(void)upgradeLevelForResult:(int)winner
+
+#pragma mark - Touches
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    if (winner == 1 && level > 1)
+    UITouch *touch = touches.anyObject;
+    CGPoint currentPoint = [touch locationInView:self.greenTableView];
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        self.greenTableView.paddleBottom.center = CGPointMake(currentPoint.x, self.greenTableView.paddleBottom.center.y);
+    }];
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = touches.anyObject;
+    CGPoint currentPoint = [touch locationInView:self.greenTableView];
+    
+    if (currentPoint.x >= self.greenTableView.frame.size.width - 45.0)
     {
-        level--;
+        self.greenTableView.paddleBottom.center = CGPointMake(self.greenTableView.frame.size.width - 45.0, self.greenTableView.frame.size.height - 26);
     }
-    if (winner == 2)
+    else if (currentPoint.x <= 45.0)
     {
-        level++;
+        self.greenTableView.paddleBottom.center = CGPointMake(45.0, self.greenTableView.frame.size.height - 26);
+    }
+    else
+    {
+        self.greenTableView.paddleBottom.center = CGPointMake(currentPoint.x, self.greenTableView.frame.size.height - 26);
     }
 }
+
 
 @end

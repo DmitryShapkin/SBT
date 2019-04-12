@@ -8,6 +8,7 @@
 
 
 #import "SberPongTableView.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface SberPongTableView ()
@@ -19,13 +20,20 @@
 
 @implementation SberPongTableView
 
+
+- (void)dealloc
+{
+    NSLog(@"dealloc SberPongTableView");
+}
+
 - (void)drawRect:(CGRect)rect
 {
     UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sberLogo.png"]];
-    background.center = CGPointMake(self.center.x + 120.f, self.center.y + 80.f);
-    background.alpha = 0.1f;
-    self.layer.masksToBounds = YES;
+    background.center = CGPointMake(self.center.x + 120.0, self.center.y + 80.0);
+    background.alpha = 0.1;
     [self addSubview:background];
+    
+    [self addShadow];
     
     [self drawTableMarkup];
     [self drawScoreTop];
@@ -33,12 +41,25 @@
     [self drawBall];
     [self drawPaddleTop];
     [self drawPaddleBottom];
+    [self drawMessageView];
+}
+
+- (void)addShadow
+{
+    self.layer.shadowRadius  = 7.5f;
+    self.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    self.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    self.layer.shadowOpacity = 0.9f;
+    self.layer.masksToBounds = NO;
+    
+    UIEdgeInsets shadowInsets = UIEdgeInsetsMake(0, 0, -7.5f, 0);
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(self.bounds, shadowInsets)];
+    self.layer.shadowPath = shadowPath.CGPath;
 }
 
 - (void)drawTableMarkup
 {
     // Нарисуем разметку для стола нашего Сбер-Понга
-    
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextSetLineWidth(context, 6.f);
@@ -68,8 +89,9 @@
     self.scoreTop.text = @"0";
     self.scoreTop.font = [UIFont systemFontOfSize: 120.0 weight:UIFontWeightLight];
     self.scoreTop.textAlignment = NSTextAlignmentCenter;
-    self.scoreTop.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.scoreTop];
+    
+    self.scoreTop.translatesAutoresizingMaskIntoConstraints = NO;
     [NSLayoutConstraint activateConstraints:@[
           [self.scoreTop.centerXAnchor constraintEqualToAnchor:self.centerXAnchor],
           [self.scoreTop.centerYAnchor constraintEqualToAnchor:self.topAnchor constant: self.bounds.size.height / 4],
@@ -148,6 +170,43 @@
         [self.paddleBottom.heightAnchor constraintEqualToConstant:20.f],
      ]];
      */
+}
+
+- (void)drawMessageView
+{
+    self.messageView = [[UIView alloc] initWithFrame:self.bounds];
+    self.messageView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"greenLines"]];
+
+    UIButton *startNewGameButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [startNewGameButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:20.0]];
+    [startNewGameButton.titleLabel setTextColor:[UIColor whiteColor]];
+    startNewGameButton.contentEdgeInsets = UIEdgeInsetsMake(20, 30, 20, 30);
+    startNewGameButton.backgroundColor = [UIColor colorWithRed:3.0/255.0 green:145.0/255.0 blue:69.0/255.0 alpha:1];
+    startNewGameButton.layer.cornerRadius = 32.f;
+    
+    [startNewGameButton setTitle:@"Начать новую игру" forState:UIControlStateNormal];
+    [startNewGameButton addTarget:self action:@selector(startNewGame) forControlEvents:UIControlEventTouchUpInside];
+    [startNewGameButton sizeToFit];
+    startNewGameButton.center = self.messageView.center;
+    
+    // Добавим тень кнопке
+    startNewGameButton.layer.shadowRadius  = 30.f;
+    startNewGameButton.layer.shadowColor   = [UIColor blackColor].CGColor;
+    startNewGameButton.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    startNewGameButton.layer.shadowOpacity = 0.9f;
+    startNewGameButton.layer.masksToBounds = NO;
+    
+    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(0, 0, -0.5f, 0);
+    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(startNewGameButton.bounds, shadowInsets)];
+    startNewGameButton.layer.shadowPath = shadowPath.CGPath;
+
+    [self.messageView addSubview:startNewGameButton];
+    [self addSubview:self.messageView];
+}
+
+- (void)startNewGame
+{
+    [self.delegate newGame];
 }
 
 @end

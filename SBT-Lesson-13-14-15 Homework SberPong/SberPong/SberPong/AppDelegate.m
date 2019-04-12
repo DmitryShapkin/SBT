@@ -13,9 +13,6 @@
 #import "StatsViewController.h"
 
 
-
-
-
 @interface AppDelegate ()
 
 @end
@@ -26,7 +23,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = UIColor.redColor;
     self.window.layer.cornerRadius = 3.f;
     self.window.layer.masksToBounds = YES;
     
@@ -43,25 +39,25 @@
     
     SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
     settingsViewController.tabBarItem.title = @"Настройки";
-    settingsViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
+    settingsViewController.tabBarItem.image = [UIImage imageNamed:@"settings"];
     
     StatsViewController *statsViewController = [[StatsViewController alloc] init];
     statsViewController.tabBarItem.title = @"Рейтинг";
-    statsViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
+    statsViewController.tabBarItem.image = [UIImage imageNamed:@"stats"];
     
     GameViewController *gameViewController = [[GameViewController alloc] init];
     gameViewController.tabBarItem.title = @"Играть";
     gameViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
     
-//    GameViewController *pauseViewController = [[GameViewController alloc] init];
-//    pauseViewController.tabBarItem.title = @"Пауза";
-//    pauseViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
-//
-//    GameViewController *playViewController = [[GameViewController alloc] init];
-//    playViewController.tabBarItem.title = @"Продолжить";
-//    playViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
+    SettingsViewController *rulesViewController = [[SettingsViewController alloc] init];
+    rulesViewController.tabBarItem.title = @"Правила";
+    rulesViewController.tabBarItem.image = [UIImage imageNamed:@"rules"];
+
+    SettingsViewController *adViewController = [[SettingsViewController alloc] init];
+    adViewController.tabBarItem.title = @"Реклама";
+    adViewController.tabBarItem.image = [UIImage imageNamed:@"advertisement"];
     
-    NSArray *viewControllerArray = @[gameViewController];
+    NSArray *viewControllerArray = @[settingsViewController, statsViewController, gameViewController, rulesViewController, adViewController];
     
     for (UIViewController *viewController in viewControllerArray)
     {
@@ -75,7 +71,7 @@
     tabBarViewController.tabBar.barTintColor = graySberColor;
     tabBarViewController.viewControllers = viewControllerArray;
     tabBarViewController.selectedIndex = 2;
-    
+
     self.window.rootViewController = tabBarViewController;
 }
 

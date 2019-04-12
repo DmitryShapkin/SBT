@@ -12,14 +12,24 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol StartNewGameProtocol <NSObject>
+
+- (void)newGame;
+
+@end
+
+
 @interface SberPongTableView : UIView
 
-@property (strong, nonatomic) UILabel *scoreTop;
-@property (strong, nonatomic) UILabel *scoreBottom;
-@property (strong, nonatomic) UIImageView *coverImageView;
-@property (strong, nonatomic) UIView *ball;
-@property (strong, nonatomic) UIView *paddleTop;
-@property (strong, nonatomic) UIView *paddleBottom;
+@property (nonatomic, strong) UILabel *scoreTop;
+@property (nonatomic, strong) UILabel *scoreBottom;
+@property (nonatomic, strong) UIImageView *coverImageView;
+@property (nonatomic, strong) UIView *ball;
+@property (nonatomic, strong) UIView *paddleTop;
+@property (nonatomic, strong) UIView *paddleBottom;
+@property (nonatomic, strong) UIView *messageView;
+@property (nonatomic, assign) BOOL isFlipped;
+@property (nonatomic, weak) id <StartNewGameProtocol> delegate;
 
 @end
 

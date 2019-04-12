@@ -8,11 +8,12 @@
 
 
 @import UIKit;
+#import "SberPongTableView.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <StartNewGameProtocol>
 
 @end
 
