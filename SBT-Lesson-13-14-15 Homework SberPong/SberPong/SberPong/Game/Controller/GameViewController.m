@@ -82,13 +82,13 @@ int level = 1;
     self.greenTableView.delegate = self;
     self.greenTableView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.greenTableView];
-
+    
     [NSLayoutConstraint activateConstraints:@[
-      [self.greenTableView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:10 + tabBarHeight + statusBarHeight],
-      [self.greenTableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
-      [self.greenTableView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
-      [self.greenTableView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
-    ]];
+                                              [self.greenTableView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:10 + tabBarHeight + statusBarHeight],
+                                              [self.greenTableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
+                                              [self.greenTableView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+                                              [self.greenTableView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
+                                              ]];
 }
 
 - (void)setupPauseButton
@@ -96,6 +96,7 @@ int level = 1;
     UIColor *blueSberColor = [UIColor colorWithRed:222.0/255.0 green:226.0/255.0 blue:237.0/255.0 alpha:1];
     
     self.pauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.pauseButton.enabled = NO;
     [self.pauseButton setHidden:YES];
     self.pauseButton.contentEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 30);
     self.pauseButton.backgroundColor = blueSberColor;
@@ -107,10 +108,10 @@ int level = 1;
     [self.view addSubview:self.pauseButton];
     
     [NSLayoutConstraint activateConstraints:@[
-      [self.pauseButton.bottomAnchor constraintEqualToAnchor:self.greenTableView.topAnchor constant: -10],
-      [self.pauseButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
-      [self.pauseButton.heightAnchor constraintEqualToConstant: 40.f],
-    ]];
+                                              [self.pauseButton.bottomAnchor constraintEqualToAnchor:self.greenTableView.topAnchor constant: -10],
+                                              [self.pauseButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+                                              [self.pauseButton.heightAnchor constraintEqualToConstant: 40.f],
+                                              ]];
 }
 
 
@@ -145,11 +146,13 @@ int level = 1;
     }
 }
 
-- (void)flipTableView:(SberPongTableView*)table
+- (void)flipTable:(SberPongTableView*)table
 {
-    [UIView transitionWithView:table duration:2.0 options:UIViewAnimationOptionTransitionFlipFromRight|UIViewAnimationOptionCurveEaseInOut animations:^{
-        table.isFlipped = !table.isFlipped;
-        
+    table.isFlipped = !table.isFlipped;
+    
+    [self setAllItemsInTabBar:self.tabBarController toEnableState:NO];
+    
+    [UIView transitionWithView:table duration:2.0 options:UIViewAnimationOptionTransitionFlipFromRight |UIViewAnimationOptionCurveEaseInOut animations:^{
         if (!table.isFlipped)
         {
             NSLog(@"messageView NO - далее скрываем кнопку Пауза");
@@ -161,7 +164,26 @@ int level = 1;
             NSLog(@"messageView YES - далее показываем кнопку Пауза");
             [self.greenTableView.messageView setHidden:YES];
         }
-    } completion:nil];
+    } completion:^(BOOL finished){
+        [self setAllItemsInTabBar:self.tabBarController toEnableState:YES];
+        if (!table.isFlipped)
+        {
+            self.pauseButton.enabled = NO;
+        }
+        else
+        {
+            self.pauseButton.enabled = YES;
+        }
+    }];
+}
+
+- (void)setAllItemsInTabBar:(UITabBarController *)aTabBar toEnableState:(BOOL)enableState
+{
+    NSArray *tabItems = aTabBar.tabBar.items;
+    for (UIBarItem *tabItem in tabItems)
+    {
+        [tabItem setEnabled:enableState];
+    }
 }
 
 - (void)startStopGameProcess
@@ -171,7 +193,7 @@ int level = 1;
     
     if ([self gameOver]) {
         NSLog(@"Игра окончена");
-        [self flipTableView:self.greenTableView];
+        [self flipTable:self.greenTableView];
         return;
     }
     [self resetDirection];
@@ -188,7 +210,7 @@ int level = 1;
     self.greenTableView.scoreTop.text = @"0";
     self.greenTableView.scoreBottom.text = @"0";
     [self.greenTableView.messageView setHidden:YES];
-    [self flipTableView:self.greenTableView];
+    [self flipTable:self.greenTableView];
     [self.pauseButton setHidden:NO];
     
     [self performSelector:@selector(startStopGameProcess) withObject:nil afterDelay:2.0 ];
@@ -231,7 +253,7 @@ int level = 1;
     } else  {
         self.dy = 1;
     }
-
+    
     self.speed = 2;
 }
 
