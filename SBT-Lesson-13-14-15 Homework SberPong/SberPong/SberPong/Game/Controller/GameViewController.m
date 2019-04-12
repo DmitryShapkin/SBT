@@ -76,7 +76,8 @@ int level = 1;
     CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
     CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     
-    self.greenTableView = [[SberPongTableView alloc] initWithFrame:CGRectMake(20, 10.0 + tabBarHeight + statusBarHeight, CGRectGetWidth(self.view.bounds) - 40, CGRectGetHeight(self.view.bounds) - tabBarHeight - statusBarHeight - 80.0)];
+//    self.greenTableView = [[SberPongTableView alloc] initWithFrame:CGRectZero];
+    self.greenTableView = [[SberPongTableView alloc] initWithFrame:CGRectMake(20.0, statusBarHeight + 60.0, CGRectGetWidth(self.view.bounds) - 40, CGRectGetHeight(self.view.bounds) - tabBarHeight - statusBarHeight - 116.0)];
     self.greenTableView.backgroundColor = greenSberColor;
     self.greenTableView.isFlipped = NO;
     self.greenTableView.delegate = self;
