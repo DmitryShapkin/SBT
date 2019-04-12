@@ -76,19 +76,19 @@ int level = 1;
     CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
     CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     
-    self.greenTableView = [[SberPongTableView alloc] init];
+    self.greenTableView = [[SberPongTableView alloc] initWithFrame:CGRectMake(20, 10.0 + tabBarHeight + statusBarHeight, CGRectGetWidth(self.view.bounds) - 40, CGRectGetHeight(self.view.bounds) - tabBarHeight - statusBarHeight - 80.0)];
     self.greenTableView.backgroundColor = greenSberColor;
     self.greenTableView.isFlipped = NO;
     self.greenTableView.delegate = self;
-    self.greenTableView.translatesAutoresizingMaskIntoConstraints = NO;
+//    self.greenTableView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.greenTableView];
     
-    [NSLayoutConstraint activateConstraints:@[
-                                              [self.greenTableView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:10 + tabBarHeight + statusBarHeight],
-                                              [self.greenTableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
-                                              [self.greenTableView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
-                                              [self.greenTableView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
-                                              ]];
+//    [NSLayoutConstraint activateConstraints:@[
+//          [self.greenTableView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:10 + tabBarHeight + statusBarHeight],
+//          [self.greenTableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
+//          [self.greenTableView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+//          [self.greenTableView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
+//    ]];
 }
 
 - (void)setupPauseButton

@@ -20,13 +20,22 @@
 
 @implementation SberPongTableView
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        NSLog(@"initWithFrame SberPongTableView");
+        [self setupLayout];
+    }
+    return self;
+}
 
 - (void)dealloc
 {
     NSLog(@"dealloc SberPongTableView");
 }
 
-- (void)drawRect:(CGRect)rect
+- (void)setupLayout
 {
     UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sberLogo.png"]];
     background.center = CGPointMake(self.center.x + 120.0, self.center.y + 80.0);
@@ -35,13 +44,17 @@
     
     [self addShadow];
     
-    [self drawTableMarkup];
     [self drawScoreTop];
     [self drawScoreBottom];
     [self drawBall];
     [self drawPaddleTop];
     [self drawPaddleBottom];
     [self drawMessageView];
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    [self drawTableMarkup];
 }
 
 - (void)addShadow
