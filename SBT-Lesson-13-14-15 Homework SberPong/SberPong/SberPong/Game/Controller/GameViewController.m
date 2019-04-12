@@ -109,10 +109,10 @@ int level = 1;
     [self.view addSubview:self.pauseButton];
     
     [NSLayoutConstraint activateConstraints:@[
-                                              [self.pauseButton.bottomAnchor constraintEqualToAnchor:self.greenTableView.topAnchor constant: -10],
-                                              [self.pauseButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
-                                              [self.pauseButton.heightAnchor constraintEqualToConstant: 40.f],
-                                              ]];
+      [self.pauseButton.bottomAnchor constraintEqualToAnchor:self.greenTableView.topAnchor constant: -10],
+      [self.pauseButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+      [self.pauseButton.heightAnchor constraintEqualToConstant: 40.f],
+    ]];
 }
 
 
@@ -308,17 +308,17 @@ int level = 1;
 
 - (void)computerPlayer
 {
-    if (self.greenTableView.ball.center.y < self.greenTableView.bounds.size.height / 2)
-    {
-        if (self.greenTableView.ball.center.x > self.greenTableView.paddleTop.center.x)
+        if (self.greenTableView.ball.center.y < (CGFloat)(self.greenTableView.bounds.size.height / 2))
         {
-            self.greenTableView.paddleTop.center = CGPointMake(self.greenTableView.paddleTop.center.x + level, self.greenTableView.paddleTop.center.y);
+            if (self.greenTableView.ball.center.x > (CGFloat)(self.greenTableView.paddleTop.center.x))
+            {
+                self.greenTableView.paddleTop.center = CGPointMake(self.greenTableView.paddleTop.center.x + (CGFloat)level, self.greenTableView.paddleTop.center.y);
+            }
+            else if (self.greenTableView.ball.center.x < (CGFloat)self.greenTableView.paddleTop.center.x)
+            {
+                self.greenTableView.paddleTop.center = CGPointMake(self.greenTableView.paddleTop.center.x - (CGFloat)level, self.greenTableView.paddleTop.center.y);
+            }
         }
-        else
-        {
-            self.greenTableView.paddleTop.center = CGPointMake(self.greenTableView.paddleTop.center.x - level, self.greenTableView.paddleTop.center.y);
-        }
-    }
 }
 
 - (BOOL)addScore
@@ -336,6 +336,20 @@ int level = 1;
         int gameOver = [self gameOver];
         if (gameOver)
         {
+            if (s1 > s2)
+            {
+                NSInteger currentComputerScore = [[[NSUserDefaults standardUserDefaults] stringForKey:@"computerScore"] integerValue];
+                currentComputerScore++;
+                [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld", currentComputerScore] forKey:@"computerScore"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            else
+            {
+                NSInteger currentUserScore = [[[NSUserDefaults standardUserDefaults] stringForKey:@"userScore"] integerValue];
+                currentUserScore++;
+                [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld", currentUserScore] forKey:@"userScore"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
             [self startStopGameProcess];
         }
         else
@@ -377,6 +391,11 @@ int level = 1;
     {
         self.greenTableView.paddleBottom.center = CGPointMake(currentPoint.x, self.greenTableView.frame.size.height - 26);
     }
+}
+
+- (void)changeSpeed:(NSInteger)speedLevel
+{
+    NSLog(@"speedLevel change");
 }
 
 

@@ -11,6 +11,8 @@
 #import "SettingsViewController.h"
 #import "GameViewController.h"
 #import "StatsViewController.h"
+#import "RulesViewController.h"
+#import "AdViewController.h"
 
 
 @interface AppDelegate ()
@@ -49,11 +51,11 @@
     gameViewController.tabBarItem.title = @"Играть";
     gameViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
     
-    SettingsViewController *rulesViewController = [[SettingsViewController alloc] init];
+    RulesViewController *rulesViewController = [[RulesViewController alloc] init];
     rulesViewController.tabBarItem.title = @"Правила";
     rulesViewController.tabBarItem.image = [UIImage imageNamed:@"rules"];
 
-    SettingsViewController *adViewController = [[SettingsViewController alloc] init];
+    AdViewController *adViewController = [[AdViewController alloc] init];
     adViewController.tabBarItem.title = @"Реклама";
     adViewController.tabBarItem.image = [UIImage imageNamed:@"advertisement"];
     
