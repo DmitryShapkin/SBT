@@ -29,7 +29,7 @@
             NSLog(@"dispatch_once dispatch_once dispatch_once");
             [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"userScore"];
             [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"computerScore"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
         });
     }
     return self;

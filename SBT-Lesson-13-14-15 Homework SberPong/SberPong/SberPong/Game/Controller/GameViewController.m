@@ -74,6 +74,7 @@ int level = 1;
 {
     UIColor *greenSberColor = [UIColor colorWithRed:20.0/255.0 green:188.0/255.0 blue:77.0/255.0 alpha:1];
     CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
+    NSLog(@"%f", tabBarHeight);
     CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     
 //    self.greenTableView = [[SberPongTableView alloc] initWithFrame:CGRectZero];
@@ -395,7 +396,7 @@ int level = 1;
 
 - (void)changeSpeed:(NSInteger)speedLevel
 {
-    NSLog(@"speedLevel change");
+    NSLog(@"speedLevel did change");
 }
 
 

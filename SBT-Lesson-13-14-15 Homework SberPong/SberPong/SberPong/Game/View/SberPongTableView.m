@@ -13,26 +13,25 @@
 
 @interface SberPongTableView ()
 
-@property (nonatomic, assign) CGFloat touchOffset;
-
 @end
 
 
 @implementation SberPongTableView
 
+- (void)dealloc
+{
+    NSLog(@"dealloc SberPongTableView");
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
+    if (self)
+    {
         NSLog(@"initWithFrame SberPongTableView");
         [self setupLayout];
     }
     return self;
-}
-
-- (void)dealloc
-{
-    NSLog(@"dealloc SberPongTableView");
 }
 
 - (void)setupLayout
@@ -57,11 +56,14 @@
     [self drawTableMarkup];
 }
 
+
+#pragma mark - Drawings
+
 - (void)addShadow
 {
-    self.layer.shadowRadius  = 7.5f;
-    self.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
-    self.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    self.layer.shadowRadius = 7.5f;
+    self.layer.shadowColor = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.layer.shadowOpacity = 0.9f;
     self.layer.masksToBounds = NO;
     
@@ -77,20 +79,13 @@
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextSetLineWidth(context, 6.f);
     CGContextSetLineCap(context, kCGLineCapSquare);
-    CGContextMoveToPoint(context, CGRectGetMinX(self.bounds) + 8.f,
-                         CGRectGetMinY(self.bounds) + 8.f);
-    CGContextAddLineToPoint(context, CGRectGetMinX(self.bounds) + 8.f,
-                            CGRectGetMaxY(self.bounds) - 8.f);
-    CGContextAddLineToPoint(context, CGRectGetMaxX(self.bounds) - 8.f,
-                            CGRectGetMaxY(self.bounds) - 8.f);
-    CGContextAddLineToPoint(context, CGRectGetMaxX(self.bounds) - 8.f,
-                            CGRectGetMinY(self.bounds) + 8.f);
-    CGContextAddLineToPoint(context, CGRectGetMinX(self.bounds) + 8.f,
-                            CGRectGetMinY(self.bounds) + 8.f);
-    CGContextMoveToPoint(context, CGRectGetMinX(self.bounds) + 8.f,
-                         CGRectGetMidY(self.bounds));
-    CGContextAddLineToPoint(context, CGRectGetMaxX(self.bounds) - 8.f,
-                            CGRectGetMidY(self.bounds));
+    CGContextMoveToPoint(context, CGRectGetMinX(self.bounds) + 8.f, CGRectGetMinY(self.bounds) + 8.f);
+    CGContextAddLineToPoint(context, CGRectGetMinX(self.bounds) + 8.f, CGRectGetMaxY(self.bounds) - 8.f);
+    CGContextAddLineToPoint(context, CGRectGetMaxX(self.bounds) - 8.f, CGRectGetMaxY(self.bounds) - 8.f);
+    CGContextAddLineToPoint(context, CGRectGetMaxX(self.bounds) - 8.f, CGRectGetMinY(self.bounds) + 8.f);
+    CGContextAddLineToPoint(context, CGRectGetMinX(self.bounds) + 8.f, CGRectGetMinY(self.bounds) + 8.f);
+    CGContextMoveToPoint(context, CGRectGetMinX(self.bounds) + 8.f, CGRectGetMidY(self.bounds));
+    CGContextAddLineToPoint(context, CGRectGetMaxX(self.bounds) - 8.f, CGRectGetMidY(self.bounds));
     CGContextStrokePath(context);
 }
 
@@ -153,7 +148,7 @@
     [self addSubview: self.paddleTop];
     
     /**
-     Задать вопрос Лёше по этому куску кода (при новой игре - верхняя ракетка стартует из центра)
+     Задать вопрос Лёше по этому куску кода (при новой игре - верхняя ракетка стартует из центра) - готово
      
      self.paddleTop.translatesAutoresizingMaskIntoConstraints = NO;
      [NSLayoutConstraint activateConstraints:@[
@@ -170,10 +165,10 @@
 {
     self.paddleBottom = [[UIView alloc] initWithFrame:CGRectMake(40, self.bounds.size.height - 36, 90, 20)];
     self.paddleBottom.backgroundColor = [UIColor colorWithRed:250.0/255.0 green:85.0/255.0 blue:83.0/255.0 alpha:1];
-    [self addSubview: self.paddleBottom];
+    [self addSubview:self.paddleBottom];
     
     /**
-     Задать вопрос Лёше по этому куску кода (при новой игре - нижняя ракетка стартует из центра)
+     Задать вопрос Лёше по этому куску кода (при новой игре - нижняя ракетка стартует из центра) - готово
      
      self.paddleBottom.translatesAutoresizingMaskIntoConstraints = NO;
      [NSLayoutConstraint activateConstraints:@[
@@ -203,14 +198,14 @@
     startNewGameButton.center = self.messageView.center;
     
     // Добавим тень кнопке
-    startNewGameButton.layer.shadowRadius  = 30.f;
-    startNewGameButton.layer.shadowColor   = [UIColor blackColor].CGColor;
-    startNewGameButton.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    startNewGameButton.layer.shadowRadius = 30.f;
+    startNewGameButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    startNewGameButton.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     startNewGameButton.layer.shadowOpacity = 0.9f;
     startNewGameButton.layer.masksToBounds = NO;
     
-    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(0, 0, -0.5f, 0);
-    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(startNewGameButton.bounds, shadowInsets)];
+    UIEdgeInsets shadowInsets = UIEdgeInsetsMake(0, 0, -0.5f, 0);
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(startNewGameButton.bounds, shadowInsets)];
     startNewGameButton.layer.shadowPath = shadowPath.CGPath;
 
     [self.messageView addSubview:startNewGameButton];
