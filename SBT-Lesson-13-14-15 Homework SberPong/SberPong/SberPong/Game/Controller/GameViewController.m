@@ -340,17 +340,17 @@ int level = 1;
             if (s1 > s2)
             {
                 NSInteger currentComputerScore = [[[NSUserDefaults standardUserDefaults] stringForKey:@"computerScore"] integerValue];
+                NSLog(@"%ld", currentComputerScore);
                 currentComputerScore++;
                 [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld", currentComputerScore] forKey:@"computerScore"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
             }
             else
             {
                 NSInteger currentUserScore = [[[NSUserDefaults standardUserDefaults] stringForKey:@"userScore"] integerValue];
                 currentUserScore++;
                 [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld", currentUserScore] forKey:@"userScore"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
             }
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"scoreHasBeenSet"];
             [self startStopGameProcess];
         }
         else

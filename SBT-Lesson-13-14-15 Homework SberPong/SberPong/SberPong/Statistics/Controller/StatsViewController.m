@@ -24,13 +24,11 @@
 {
     self = [super init];
     if (self) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            NSLog(@"dispatch_once dispatch_once dispatch_once");
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"scoreHasBeenSet"])
+        {
             [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"userScore"];
             [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"computerScore"];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-        });
+        }
     }
     return self;
 }

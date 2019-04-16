@@ -18,11 +18,6 @@
 
 @implementation SberPongTableView
 
-- (void)dealloc
-{
-    NSLog(@"dealloc SberPongTableView");
-}
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
