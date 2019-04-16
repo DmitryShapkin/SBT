@@ -98,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				AB3E3A60225BE20800A59AAB /* Model */,
-				AB3E3A5F225BE20300A59AAB /* View */,
 				AB3E3A5E225BE1FC00A59AAB /* Controller */,
 			);
 			path = Settings;
@@ -111,13 +110,6 @@
 				AB0A36B2225B7C3F00DAB08C /* SettingsViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		AB3E3A5F225BE20300A59AAB /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		AB3E3A60225BE20800A59AAB /* Model */ = {

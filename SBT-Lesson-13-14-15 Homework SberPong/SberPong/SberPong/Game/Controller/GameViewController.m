@@ -29,11 +29,6 @@
 
 int level = 1;
 
-- (void)dealloc
-{
-    NSLog(@"dealloc GameViewController");
-}
-
 - (instancetype)init
 {
     self = [super init];
@@ -77,20 +72,11 @@ int level = 1;
     NSLog(@"%f", tabBarHeight);
     CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     
-//    self.greenTableView = [[SberPongTableView alloc] initWithFrame:CGRectZero];
     self.greenTableView = [[SberPongTableView alloc] initWithFrame:CGRectMake(20.0, statusBarHeight + 60.0, CGRectGetWidth(self.view.bounds) - 40, CGRectGetHeight(self.view.bounds) - tabBarHeight - statusBarHeight - 116.0)];
     self.greenTableView.backgroundColor = greenSberColor;
     self.greenTableView.isFlipped = NO;
     self.greenTableView.delegate = self;
-//    self.greenTableView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.greenTableView];
-    
-//    [NSLayoutConstraint activateConstraints:@[
-//          [self.greenTableView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:10 + tabBarHeight + statusBarHeight],
-//          [self.greenTableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
-//          [self.greenTableView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
-//          [self.greenTableView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
-//    ]];
 }
 
 - (void)setupPauseButton
@@ -256,7 +242,14 @@ int level = 1;
         self.dy = 1;
     }
     
-    self.speed = 2;
+    if ([[NSUserDefaults standardUserDefaults] floatForKey:@"ballSpeed"] == 0)
+    {
+        self.speed = 2;
+    }
+    else
+    {
+        self.speed = [[NSUserDefaults standardUserDefaults] floatForKey:@"ballSpeed"];
+    }
 }
 
 - (void)stop
@@ -393,11 +386,5 @@ int level = 1;
         self.greenTableView.paddleBottom.center = CGPointMake(currentPoint.x, self.greenTableView.frame.size.height - 26);
     }
 }
-
-- (void)changeSpeed:(NSInteger)speedLevel
-{
-    NSLog(@"speedLevel did change");
-}
-
 
 @end

@@ -69,7 +69,15 @@
 {
     if(segment.selectedSegmentIndex == 0)
     {
-        NSLog(@"00000");
+        [[NSUserDefaults standardUserDefaults] setFloat:2.f forKey:@"ballSpeed"];
+    }
+    else if (segment.selectedSegmentIndex == 1)
+    {
+        [[NSUserDefaults standardUserDefaults] setFloat:5.f forKey:@"ballSpeed"];
+    }
+    else if (segment.selectedSegmentIndex == 2)
+    {
+        [[NSUserDefaults standardUserDefaults] setFloat:8.f forKey:@"ballSpeed"];
     }
 }
 

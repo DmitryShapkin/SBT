@@ -12,16 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol SegmentedControlDelegate <NSObject>
-
-- (void)changeSpeed:(NSInteger)speedLevel;
-
-@end
-
-
 @interface SettingsViewController : UIViewController
-
-@property (nonatomic, weak) id <SegmentedControlDelegate> delegate;
 
 @end
 

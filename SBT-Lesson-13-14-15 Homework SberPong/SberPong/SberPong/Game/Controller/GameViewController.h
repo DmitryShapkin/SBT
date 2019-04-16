@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GameViewController : UIViewController <StartNewGameProtocol, SegmentedControlDelegate>
+@interface GameViewController : UIViewController <StartNewGameProtocol>
 
 @end
 
