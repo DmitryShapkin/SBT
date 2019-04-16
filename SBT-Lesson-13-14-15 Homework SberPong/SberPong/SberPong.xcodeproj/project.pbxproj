@@ -17,6 +17,7 @@
 		AB0A36BA225B902200DAB08C /* SberPongTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36B9225B902200DAB08C /* SberPongTableView.m */; };
 		ABF958642260EBE5004A598C /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF958632260EBE5004A598C /* AdViewController.m */; };
 		ABF9586B2260FF2B004A598C /* RulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF9586A2260FF2B004A598C /* RulesViewController.m */; };
+		ABF958BB2265E627004A598C /* SberPongColor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF958BA2265E627004A598C /* SberPongColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		ABF958632260EBE5004A598C /* AdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdViewController.m; sourceTree = "<group>"; };
 		ABF958692260FF2B004A598C /* RulesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RulesViewController.h; sourceTree = "<group>"; };
 		ABF9586A2260FF2B004A598C /* RulesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RulesViewController.m; sourceTree = "<group>"; };
+		ABF958B92265E627004A598C /* SberPongColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SberPongColor.h; sourceTree = "<group>"; };
+		ABF958BA2265E627004A598C /* SberPongColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SberPongColor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 		AB3E3A5C225BE12000A59AAB /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				ABF958B92265E627004A598C /* SberPongColor.h */,
+				ABF958BA2265E627004A598C /* SberPongColor.m */,
 				AB0A36A0225B457300DAB08C /* Assets.xcassets */,
 				AB0A36A2225B457300DAB08C /* LaunchScreen.storyboard */,
 				AB0A36A5225B457300DAB08C /* Info.plist */,
@@ -329,6 +334,7 @@
 				AB0A36B6225B7CCD00DAB08C /* StatsViewController.m in Sources */,
 				AB0A36B3225B7C3F00DAB08C /* SettingsViewController.m in Sources */,
 				AB0A36A7225B457300DAB08C /* main.m in Sources */,
+				ABF958BB2265E627004A598C /* SberPongColor.m in Sources */,
 				AB0A3699225B456E00DAB08C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

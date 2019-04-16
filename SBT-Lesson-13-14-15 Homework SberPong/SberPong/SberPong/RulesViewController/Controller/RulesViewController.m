@@ -8,6 +8,7 @@
 
 
 #import "RulesViewController.h"
+#import "SberPongColor.h"
 
 
 @interface RulesViewController ()
@@ -21,12 +22,11 @@
 {
     [super viewDidLoad];
     
-    UIColor *lightGraySberColor = [UIColor colorWithRed:240.0/255.0 green:243.0/255.0 blue:252.0/255.0 alpha:1];
-    self.view.backgroundColor = lightGraySberColor;
+    self.view.backgroundColor = [SberPongColor lightGraySberColor];
     
     UILabel *titleLabel = [UILabel new];
     titleLabel.text = @"Правила игры:\n\nИгра до 5-ти очков";
-    titleLabel.textColor = [UIColor colorWithRed:13.0/255.0 green:10.0/255.0 blue:37.0/255.0 alpha:1];
+    titleLabel.textColor = [SberPongColor blackFontSberColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     titleLabel.numberOfLines = 0;

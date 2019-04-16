@@ -9,6 +9,7 @@
 
 #import "GameViewController.h"
 #import "SberPongTableView.h"
+#import "SberPongColor.h"
 
 
 @interface GameViewController ()
@@ -60,8 +61,7 @@ int level = 1;
 
 - (void)createUserInterface
 {
-    UIColor *lightGraySberColor = [UIColor colorWithRed:240.0/255.0 green:243.0/255.0 blue:252.0/255.0 alpha:1];
-    self.view.backgroundColor = lightGraySberColor;
+    self.view.backgroundColor = [SberPongColor lightGraySberColor];
     self.maxScore = 5;
     
     [self setupSberPongTable];
@@ -70,12 +70,11 @@ int level = 1;
 
 - (void)setupSberPongTable
 {
-    UIColor *greenSberColor = [UIColor colorWithRed:20.0/255.0 green:188.0/255.0 blue:77.0/255.0 alpha:1];
     CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
     CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     
     self.greenTableView = [[SberPongTableView alloc] initWithFrame:CGRectMake(20.0, statusBarHeight + 60.0, CGRectGetWidth(self.view.bounds) - 40, CGRectGetHeight(self.view.bounds) - tabBarHeight - statusBarHeight - 116.0)];
-    self.greenTableView.backgroundColor = greenSberColor;
+    self.greenTableView.backgroundColor = [SberPongColor greenSberColor];
     self.greenTableView.isFlipped = NO;
     self.greenTableView.delegate = self;
     [self.view addSubview:self.greenTableView];
@@ -83,16 +82,14 @@ int level = 1;
 
 - (void)setupPauseButton
 {
-    UIColor *blueSberColor = [UIColor colorWithRed:222.0/255.0 green:226.0/255.0 blue:237.0/255.0 alpha:1];
-    
     self.pauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.pauseButton.enabled = NO;
     [self.pauseButton setHidden:YES];
     self.pauseButton.contentEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 30);
-    self.pauseButton.backgroundColor = blueSberColor;
+    self.pauseButton.backgroundColor = [SberPongColor graySberColor];
     self.pauseButton.layer.cornerRadius = 20.f;
     [self.pauseButton setTitle:@"Пауза" forState:UIControlStateNormal];
-    [self.pauseButton setTitleColor:[UIColor colorWithRed:47.0/255.0 green:51.0/255.0 blue:63.0/255.0 alpha:1] forState:UIControlStateNormal];
+    [self.pauseButton setTitleColor:[SberPongColor blackFontSberColor] forState:UIControlStateNormal];
     [self.pauseButton addTarget:self action:@selector(pauseButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.pauseButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.pauseButton];
@@ -118,7 +115,7 @@ int level = 1;
         self.timer = nil;
         
         [UIView animateWithDuration:0.3f animations:^{
-            self.pauseButton.backgroundColor = [UIColor colorWithRed:20.0/255.0 green:188.0/255.0 blue:77.0/255.0 alpha:1];
+            self.pauseButton.backgroundColor = [SberPongColor greenSberColor];
             [self.pauseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }];
     }
@@ -130,8 +127,8 @@ int level = 1;
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(moveBall) userInfo:nil repeats:YES];
         
         [UIView animateWithDuration:0.3f animations:^{
-            self.pauseButton.backgroundColor = [UIColor colorWithRed:222.0/255.0 green:226.0/255.0 blue:237.0/255.0 alpha:1];
-            [self.pauseButton setTitleColor:[UIColor colorWithRed:47.0/255.0 green:51.0/255.0 blue:63.0/255.0 alpha:1] forState:UIControlStateNormal];
+            self.pauseButton.backgroundColor = [SberPongColor graySberColor];
+            [self.pauseButton setTitleColor:[SberPongColor blackFontSberColor] forState:UIControlStateNormal];
         }];
     }
 }

@@ -9,6 +9,7 @@
 
 #import "SberPongTableView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SberPongColor.h"
 
 
 @interface SberPongTableView ()
@@ -56,7 +57,7 @@
 - (void)addShadow
 {
     self.layer.shadowRadius = 7.5f;
-    self.layer.shadowColor = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    self.layer.shadowColor = [SberPongColor shadowSberColor].CGColor;
     self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.layer.shadowOpacity = 0.9f;
     self.layer.masksToBounds = NO;
@@ -119,9 +120,8 @@
 
 - (void)drawBall
 {
-    UIColor *orangeSberColor = [UIColor colorWithRed:255.0/255.0 green:168.0/255.0 blue:3.0/255.0 alpha:1];
     self.ball = [UIView new];
-    self.ball.backgroundColor = orangeSberColor;
+    self.ball.backgroundColor = [SberPongColor orangeSberColor];
     self.ball.layer.cornerRadius = 10.f;
     self.ball.hidden = YES;
     [self addSubview:self.ball];
@@ -138,7 +138,7 @@
 - (void)drawPaddleTop
 {
     self.paddleTop = [[UIView alloc] initWithFrame:CGRectMake(40, 16, 90, 20)];
-    self.paddleTop.backgroundColor = [UIColor colorWithRed:250.0/255.0 green:85.0/255.0 blue:83.0/255.0 alpha:1];
+    self.paddleTop.backgroundColor = [SberPongColor redSberColor];
     [self addSubview: self.paddleTop];
     
     /**
@@ -158,7 +158,7 @@
 - (void)drawPaddleBottom
 {
     self.paddleBottom = [[UIView alloc] initWithFrame:CGRectMake(40, self.bounds.size.height - 36, 90, 20)];
-    self.paddleBottom.backgroundColor = [UIColor colorWithRed:250.0/255.0 green:85.0/255.0 blue:83.0/255.0 alpha:1];
+    self.paddleBottom.backgroundColor = [SberPongColor redSberColor];
     [self addSubview:self.paddleBottom];
     
     /**
@@ -183,7 +183,7 @@
     [startNewGameButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:20.0]];
     [startNewGameButton.titleLabel setTextColor:[UIColor whiteColor]];
     startNewGameButton.contentEdgeInsets = UIEdgeInsetsMake(20, 30, 20, 30);
-    startNewGameButton.backgroundColor = [UIColor colorWithRed:3.0/255.0 green:145.0/255.0 blue:69.0/255.0 alpha:1];
+    startNewGameButton.backgroundColor = [SberPongColor darkGreenSberColor];
     startNewGameButton.layer.cornerRadius = 32.f;
     
     [startNewGameButton setTitle:@"Начать новую игру" forState:UIControlStateNormal];

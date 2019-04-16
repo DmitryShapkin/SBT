@@ -8,6 +8,7 @@
 
 
 #import "StatsViewController.h"
+#import "SberPongColor.h"
 
 
 @interface StatsViewController ()
@@ -37,40 +38,39 @@
 {
     [super viewDidLoad];
 
-    UIColor *lightGraySberColor = [UIColor colorWithRed:240.0/255.0 green:243.0/255.0 blue:252.0/255.0 alpha:1];
-    self.view.backgroundColor = lightGraySberColor;
+    self.view.backgroundColor = [SberPongColor lightGraySberColor];
     
     UILabel *titleLabel = [UILabel new];
     titleLabel.text = @"Рейтинг";
-    titleLabel.textColor = [UIColor colorWithRed:13.0/255.0 green:10.0/255.0 blue:37.0/255.0 alpha:1];
+    titleLabel.textColor = [SberPongColor blackFontSberColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:22]];
     [self.view addSubview:titleLabel];
     
     UILabel *userTitleLabel = [UILabel new];
     userTitleLabel.text = @"Ваших побед:";
-    userTitleLabel.textColor = [UIColor colorWithRed:125.0/255.0 green:129.0/255.0 blue:140.0/255.0 alpha:1];
+    userTitleLabel.textColor = [SberPongColor darkGraySberColor];
     userTitleLabel.textAlignment = NSTextAlignmentCenter;
     [userTitleLabel setFont:[UIFont fontWithName:@"Helvetica" size:17]];
     [self.view addSubview:userTitleLabel];
     
     self.userWinLabel = [UILabel new];
     self.userWinLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"userScore"];
-    self.userWinLabel.textColor = [UIColor colorWithRed:13.0/255.0 green:10.0/255.0 blue:37.0/255.0 alpha:1];
+    self.userWinLabel.textColor = [SberPongColor blackFontSberColor];
     self.userWinLabel.textAlignment = NSTextAlignmentCenter;
     [self.userWinLabel setFont:[UIFont fontWithName:@"Helvetica" size:80]];
     [self.view addSubview:self.userWinLabel];
     
     UILabel *computerTitleLabel = [UILabel new];
     computerTitleLabel.text = @"Побед компьютера:";
-    computerTitleLabel.textColor = [UIColor colorWithRed:125.0/255.0 green:129.0/255.0 blue:140.0/255.0 alpha:1];
+    computerTitleLabel.textColor = [SberPongColor darkGraySberColor];
     computerTitleLabel.textAlignment = NSTextAlignmentCenter;
     [computerTitleLabel setFont:[UIFont fontWithName:@"Helvetica" size:17]];
     [self.view addSubview:computerTitleLabel];
     
     self.computerWinLabel = [UILabel new];
     self.computerWinLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"computerScore"];
-    self.computerWinLabel.textColor = [UIColor colorWithRed:13.0/255.0 green:10.0/255.0 blue:37.0/255.0 alpha:1];
+    self.computerWinLabel.textColor = [SberPongColor blackFontSberColor];
     self.computerWinLabel.textAlignment = NSTextAlignmentCenter;
     [self.computerWinLabel setFont:[UIFont fontWithName:@"Helvetica" size:80]];
     [self.view addSubview:self.computerWinLabel];

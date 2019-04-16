@@ -8,6 +8,7 @@
 
 
 #import "SettingsViewController.h"
+#import "SberPongColor.h"
 
 
 @interface SettingsViewController ()
@@ -20,20 +21,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UIColor *lightGraySberColor = [UIColor colorWithRed:240.0/255.0 green:243.0/255.0 blue:252.0/255.0 alpha:1];
-    self.view.backgroundColor = lightGraySberColor;
+
+    self.view.backgroundColor = [SberPongColor lightGraySberColor];
     
     UILabel *titleLabel = [UILabel new];
     titleLabel.text = @"Настройки";
-    titleLabel.textColor = [UIColor colorWithRed:13.0/255.0 green:10.0/255.0 blue:37.0/255.0 alpha:1];
+    titleLabel.textColor = [SberPongColor blackFontSberColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:22]];
     [self.view addSubview:titleLabel];
     
     UILabel *subTitleLabel = [UILabel new];
     subTitleLabel.text = @"Поменять скорость игры";
-    subTitleLabel.textColor = [UIColor colorWithRed:125.0/255.0 green:129.0/255.0 blue:140.0/255.0 alpha:1];
+    subTitleLabel.textColor = [SberPongColor darkGraySberColor];
     subTitleLabel.textAlignment = NSTextAlignmentCenter;
     subTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     subTitleLabel.numberOfLines = 0;
@@ -44,8 +44,8 @@
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
     segmentedControl.frame = CGRectMake(20.0, 200.0, CGRectGetWidth(self.view.bounds) - 40.0, 50.0);
     [segmentedControl addTarget:self action:@selector(mySegmentControlAction:) forControlEvents: UIControlEventValueChanged];
-    segmentedControl.tintColor = [UIColor colorWithRed:3.0/255.0 green:145.0/255.0 blue:69.0/255.0 alpha:1];
-    segmentedControl.selectedSegmentIndex = 0;
+    segmentedControl.tintColor = [SberPongColor darkGreenSberColor];
+    segmentedControl.selectedSegmentIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"segmentIndex"];
     [self.view addSubview:segmentedControl];
     
     titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -79,6 +79,8 @@
     {
         [[NSUserDefaults standardUserDefaults] setFloat:8.f forKey:@"ballSpeed"];
     }
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:segment.selectedSegmentIndex forKey:@"segmentIndex"];
 }
 
 
