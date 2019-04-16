@@ -29,11 +29,16 @@
 
 int level = 1;
 
+- (void)dealloc
+{
+    [[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:@"ballSpeed"];
+}
+
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        NSLog(@"init GameViewController");
+        [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"ballSpeed" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -46,8 +51,6 @@ int level = 1;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"viewWillDisappear");
-    
     if (!self.isPauseOn && !self.pauseButton.isHidden)
     {
         NSLog(@"Состояние для игрового процесса с выключенной паузой");
@@ -69,7 +72,6 @@ int level = 1;
 {
     UIColor *greenSberColor = [UIColor colorWithRed:20.0/255.0 green:188.0/255.0 blue:77.0/255.0 alpha:1];
     CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
-    NSLog(@"%f", tabBarHeight);
     CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     
     self.greenTableView = [[SberPongTableView alloc] initWithFrame:CGRectMake(20.0, statusBarHeight + 60.0, CGRectGetWidth(self.view.bounds) - 40, CGRectGetHeight(self.view.bounds) - tabBarHeight - statusBarHeight - 116.0)];
@@ -143,13 +145,11 @@ int level = 1;
     [UIView transitionWithView:table duration:2.0 options:UIViewAnimationOptionTransitionFlipFromRight |UIViewAnimationOptionCurveEaseInOut animations:^{
         if (!table.isFlipped)
         {
-            NSLog(@"messageView NO - далее скрываем кнопку Пауза");
             [self.greenTableView.messageView setHidden:NO];
             [self.pauseButton setHidden:YES];
         }
         else
         {
-            NSLog(@"messageView YES - далее показываем кнопку Пауза");
             [self.greenTableView.messageView setHidden:YES];
         }
     } completion:^(BOOL finished){
@@ -176,7 +176,6 @@ int level = 1;
 
 - (void)startStopGameProcess
 {
-    NSLog(@"startStopGameProcess");
     [self stop];
     
     if ([self gameOver]) {
@@ -193,7 +192,6 @@ int level = 1;
 
 - (void)newGame
 {
-    NSLog(@"New game");
     [self resetDirection];
     self.greenTableView.scoreTop.text = @"0";
     self.greenTableView.scoreBottom.text = @"0";
@@ -302,17 +300,17 @@ int level = 1;
 
 - (void)computerPlayer
 {
-        if (self.greenTableView.ball.center.y < (CGFloat)(self.greenTableView.bounds.size.height / 2))
+    if (self.greenTableView.ball.center.y < (CGFloat)(self.greenTableView.bounds.size.height / 2))
+    {
+        if (self.greenTableView.ball.center.x > (CGFloat)(self.greenTableView.paddleTop.center.x) && self.greenTableView.paddleTop.center.x <= self.greenTableView.frame.size.width - 45.0)
         {
-            if (self.greenTableView.ball.center.x > (CGFloat)(self.greenTableView.paddleTop.center.x))
-            {
-                self.greenTableView.paddleTop.center = CGPointMake(self.greenTableView.paddleTop.center.x + (CGFloat)level, self.greenTableView.paddleTop.center.y);
-            }
-            else if (self.greenTableView.ball.center.x < (CGFloat)self.greenTableView.paddleTop.center.x)
-            {
-                self.greenTableView.paddleTop.center = CGPointMake(self.greenTableView.paddleTop.center.x - (CGFloat)level, self.greenTableView.paddleTop.center.y);
-            }
+            self.greenTableView.paddleTop.center = CGPointMake(self.greenTableView.paddleTop.center.x + (CGFloat)level, self.greenTableView.paddleTop.center.y);
         }
+        else if (self.greenTableView.ball.center.x < (CGFloat)self.greenTableView.paddleTop.center.x && self.greenTableView.paddleTop.center.x >= 45.0)
+        {
+            self.greenTableView.paddleTop.center = CGPointMake(self.greenTableView.paddleTop.center.x - (CGFloat)level, self.greenTableView.paddleTop.center.y);
+        }
+    }
 }
 
 - (BOOL)addScore
@@ -363,9 +361,25 @@ int level = 1;
     UITouch *touch = touches.anyObject;
     CGPoint currentPoint = [touch locationInView:self.greenTableView];
     
-    [UIView animateWithDuration:0.3f animations:^{
-        self.greenTableView.paddleBottom.center = CGPointMake(currentPoint.x, self.greenTableView.paddleBottom.center.y);
-    }];
+    
+    if (currentPoint.x >= self.greenTableView.frame.size.width - 45.0)
+    {
+        [UIView animateWithDuration:0.3f animations:^{
+            self.greenTableView.paddleBottom.center = CGPointMake(self.greenTableView.frame.size.width - 45.0, self.greenTableView.paddleBottom.center.y);
+        }];
+    }
+    else if (currentPoint.x <= 45.0)
+    {
+        [UIView animateWithDuration:0.3f animations:^{
+            self.greenTableView.paddleBottom.center = CGPointMake(45.0, self.greenTableView.paddleBottom.center.y);
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.3f animations:^{
+            self.greenTableView.paddleBottom.center = CGPointMake(currentPoint.x, self.greenTableView.paddleBottom.center.y);
+        }];
+    }
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -385,6 +399,14 @@ int level = 1;
     {
         self.greenTableView.paddleBottom.center = CGPointMake(currentPoint.x, self.greenTableView.frame.size.height - 26);
     }
+}
+
+
+#pragma mark - Notifications
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    self.speed = [[change objectForKey:@"new"] floatValue];
 }
 
 @end

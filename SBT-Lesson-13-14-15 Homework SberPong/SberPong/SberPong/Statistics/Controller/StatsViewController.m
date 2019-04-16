@@ -107,7 +107,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear");
     self.computerWinLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"computerScore"];
     self.userWinLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"userScore"];
 }

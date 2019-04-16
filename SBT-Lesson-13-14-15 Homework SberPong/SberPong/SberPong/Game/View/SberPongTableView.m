@@ -23,7 +23,6 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        NSLog(@"initWithFrame SberPongTableView");
         [self setupLayout];
     }
     return self;
