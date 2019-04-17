@@ -8,8 +8,8 @@
 
 
 #import "SberPongTableView.h"
-#import <QuartzCore/QuartzCore.h>
 #import "SberPongColor.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface SberPongTableView ()
@@ -37,7 +37,6 @@
     [self addSubview:background];
     
     [self addShadow];
-    
     [self drawScoreTop];
     [self drawScoreBottom];
     [self drawBall];
@@ -140,19 +139,6 @@
     self.paddleTop = [[UIView alloc] initWithFrame:CGRectMake(40, 16, 90, 20)];
     self.paddleTop.backgroundColor = [SberPongColor redSberColor];
     [self addSubview: self.paddleTop];
-    
-    /**
-     Задать вопрос Лёше по этому куску кода (при новой игре - верхняя ракетка стартует из центра) - готово
-     
-     self.paddleTop.translatesAutoresizingMaskIntoConstraints = NO;
-     [NSLayoutConstraint activateConstraints:@[
-        [self.paddleTop.topAnchor constraintEqualToAnchor:self.topAnchor constant: 16.f],
-        [self.paddleTop.centerXAnchor constraintEqualToAnchor:self.centerXAnchor],
-        [self.paddleTop.widthAnchor constraintEqualToConstant:90.f],
-        [self.paddleTop.heightAnchor constraintEqualToConstant:20.f],
-     ]];
-     
-     */
 }
 
 - (void)drawPaddleBottom
@@ -160,18 +146,6 @@
     self.paddleBottom = [[UIView alloc] initWithFrame:CGRectMake(40, self.bounds.size.height - 36, 90, 20)];
     self.paddleBottom.backgroundColor = [SberPongColor redSberColor];
     [self addSubview:self.paddleBottom];
-    
-    /**
-     Задать вопрос Лёше по этому куску кода (при новой игре - нижняя ракетка стартует из центра) - готово
-     
-     self.paddleBottom.translatesAutoresizingMaskIntoConstraints = NO;
-     [NSLayoutConstraint activateConstraints:@[
-        [self.paddleBottom.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant: -16.f],
-        [self.paddleBottom.centerXAnchor constraintEqualToAnchor:self.centerXAnchor],
-        [self.paddleBottom.widthAnchor constraintEqualToConstant:90.f],
-        [self.paddleBottom.heightAnchor constraintEqualToConstant:20.f],
-     ]];
-     */
 }
 
 - (void)drawMessageView
@@ -205,6 +179,9 @@
     [self.messageView addSubview:startNewGameButton];
     [self addSubview:self.messageView];
 }
+
+
+#pragma mark - Actions
 
 - (void)startNewGame
 {

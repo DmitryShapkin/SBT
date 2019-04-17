@@ -11,13 +11,16 @@
 		AB0A36A1225B457300DAB08C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0A36A0225B457300DAB08C /* Assets.xcassets */; };
 		AB0A36A4225B457300DAB08C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0A36A2225B457300DAB08C /* LaunchScreen.storyboard */; };
 		AB0A36A7225B457300DAB08C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36A6225B457300DAB08C /* main.m */; };
-		AB0A36B0225B532500DAB08C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36AF225B532500DAB08C /* GameViewController.m */; };
+		AB0A36B0225B532500DAB08C /* SberPongMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36AF225B532500DAB08C /* SberPongMainView.m */; };
 		AB0A36B3225B7C3F00DAB08C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36B2225B7C3F00DAB08C /* SettingsViewController.m */; };
 		AB0A36B6225B7CCD00DAB08C /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36B5225B7CCD00DAB08C /* StatsViewController.m */; };
 		AB0A36BA225B902200DAB08C /* SberPongTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0A36B9225B902200DAB08C /* SberPongTableView.m */; };
 		ABF958642260EBE5004A598C /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF958632260EBE5004A598C /* AdViewController.m */; };
 		ABF9586B2260FF2B004A598C /* RulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF9586A2260FF2B004A598C /* RulesViewController.m */; };
 		ABF958BB2265E627004A598C /* SberPongColor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF958BA2265E627004A598C /* SberPongColor.m */; };
+		ABF958F1226777E3004A598C /* SberPongAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF958F0226777E3004A598C /* SberPongAssembly.m */; };
+		ABF9590222678953004A598C /* GameSberPong.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF9590122678953004A598C /* GameSberPong.m */; };
+		ABF9590622678B8A004A598C /* PresenterSberPong.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF9590522678B8A004A598C /* PresenterSberPong.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +31,8 @@
 		AB0A36A3225B457300DAB08C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB0A36A5225B457300DAB08C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB0A36A6225B457300DAB08C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AB0A36AE225B532500DAB08C /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		AB0A36AF225B532500DAB08C /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		AB0A36AE225B532500DAB08C /* SberPongMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SberPongMainView.h; sourceTree = "<group>"; };
+		AB0A36AF225B532500DAB08C /* SberPongMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SberPongMainView.m; sourceTree = "<group>"; };
 		AB0A36B1225B7C3F00DAB08C /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		AB0A36B2225B7C3F00DAB08C /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		AB0A36B4225B7CCD00DAB08C /* StatsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
@@ -42,6 +45,13 @@
 		ABF9586A2260FF2B004A598C /* RulesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RulesViewController.m; sourceTree = "<group>"; };
 		ABF958B92265E627004A598C /* SberPongColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SberPongColor.h; sourceTree = "<group>"; };
 		ABF958BA2265E627004A598C /* SberPongColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SberPongColor.m; sourceTree = "<group>"; };
+		ABF958EF226777E3004A598C /* SberPongAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SberPongAssembly.h; sourceTree = "<group>"; };
+		ABF958F0226777E3004A598C /* SberPongAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SberPongAssembly.m; sourceTree = "<group>"; };
+		ABF958FE22678798004A598C /* SberPongProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SberPongProtocols.h; sourceTree = "<group>"; };
+		ABF9590022678953004A598C /* GameSberPong.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameSberPong.h; sourceTree = "<group>"; };
+		ABF9590122678953004A598C /* GameSberPong.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameSberPong.m; sourceTree = "<group>"; };
+		ABF9590422678B8A004A598C /* PresenterSberPong.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresenterSberPong.h; sourceTree = "<group>"; };
+		ABF9590522678B8A004A598C /* PresenterSberPong.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresenterSberPong.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,11 +86,11 @@
 			children = (
 				AB0A3697225B456E00DAB08C /* AppDelegate.h */,
 				AB0A3698225B456E00DAB08C /* AppDelegate.m */,
-				AB3E3A5D225BE1E900A59AAB /* Settings */,
-				AB3E3A61225BE20F00A59AAB /* Statistics */,
-				AB3E3A65225BE23E00A59AAB /* Game */,
-				ABF958652260FEF6004A598C /* RulesViewController */,
-				ABF9585E2260EB99004A598C /* Advertisement */,
+				ABF958682260FF13004A598C /* Model */,
+				ABF9590722678BA4004A598C /* View */,
+				ABF9590322678B64004A598C /* Presenter */,
+				ABF958EE226777A8004A598C /* Assembly */,
+				ABF958FD22678755004A598C /* Protocols */,
 				AB3E3A5C225BE12000A59AAB /* Supporting files */,
 			);
 			path = SberPong;
@@ -99,163 +109,91 @@
 			path = "Supporting files";
 			sourceTree = "<group>";
 		};
-		AB3E3A5D225BE1E900A59AAB /* Settings */ = {
+		ABF958682260FF13004A598C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AB3E3A60225BE20800A59AAB /* Model */,
-				AB3E3A5E225BE1FC00A59AAB /* Controller */,
+				ABF9590022678953004A598C /* GameSberPong.h */,
+				ABF9590122678953004A598C /* GameSberPong.m */,
 			);
-			path = Settings;
+			name = Model;
+			path = RulesViewController/Model;
 			sourceTree = "<group>";
 		};
-		AB3E3A5E225BE1FC00A59AAB /* Controller */ = {
+		ABF958EE226777A8004A598C /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				ABF958EF226777E3004A598C /* SberPongAssembly.h */,
+				ABF958F0226777E3004A598C /* SberPongAssembly.m */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		ABF958FD22678755004A598C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				ABF958FE22678798004A598C /* SberPongProtocols.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		ABF9590322678B64004A598C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				ABF9590422678B8A004A598C /* PresenterSberPong.h */,
+				ABF9590522678B8A004A598C /* PresenterSberPong.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		ABF9590722678BA4004A598C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB0A36B8225B902200DAB08C /* SberPongTableView.h */,
+				AB0A36B9225B902200DAB08C /* SberPongTableView.m */,
+				AB0A36AE225B532500DAB08C /* SberPongMainView.h */,
+				AB0A36AF225B532500DAB08C /* SberPongMainView.m */,
+				ABF9590B2267AFDD004A598C /* Rules */,
+				ABF9590A2267AFB1004A598C /* Advertisement */,
+				ABF959092267AF36004A598C /* Statistics */,
+				ABF959082267AF0B004A598C /* Settings */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ABF959082267AF0B004A598C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				AB0A36B1225B7C3F00DAB08C /* SettingsViewController.h */,
 				AB0A36B2225B7C3F00DAB08C /* SettingsViewController.m */,
 			);
-			path = Controller;
+			path = Settings;
 			sourceTree = "<group>";
 		};
-		AB3E3A60225BE20800A59AAB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		AB3E3A61225BE20F00A59AAB /* Statistics */ = {
-			isa = PBXGroup;
-			children = (
-				AB3E3A64225BE22900A59AAB /* Model */,
-				AB3E3A63225BE22300A59AAB /* View */,
-				AB3E3A62225BE21C00A59AAB /* Controller */,
-			);
-			path = Statistics;
-			sourceTree = "<group>";
-		};
-		AB3E3A62225BE21C00A59AAB /* Controller */ = {
+		ABF959092267AF36004A598C /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
 				AB0A36B4225B7CCD00DAB08C /* StatsViewController.h */,
 				AB0A36B5225B7CCD00DAB08C /* StatsViewController.m */,
 			);
-			path = Controller;
+			path = Statistics;
 			sourceTree = "<group>";
 		};
-		AB3E3A63225BE22300A59AAB /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		AB3E3A64225BE22900A59AAB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		AB3E3A65225BE23E00A59AAB /* Game */ = {
-			isa = PBXGroup;
-			children = (
-				AB3E3A68225BE24D00A59AAB /* Model */,
-				AB3E3A67225BE24900A59AAB /* View */,
-				AB3E3A66225BE24300A59AAB /* Controller */,
-			);
-			path = Game;
-			sourceTree = "<group>";
-		};
-		AB3E3A66225BE24300A59AAB /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				AB0A36AE225B532500DAB08C /* GameViewController.h */,
-				AB0A36AF225B532500DAB08C /* GameViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		AB3E3A67225BE24900A59AAB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AB0A36B8225B902200DAB08C /* SberPongTableView.h */,
-				AB0A36B9225B902200DAB08C /* SberPongTableView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		AB3E3A68225BE24D00A59AAB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		ABF9585E2260EB99004A598C /* Advertisement */ = {
-			isa = PBXGroup;
-			children = (
-				ABF958612260EBC0004A598C /* Model */,
-				ABF958602260EBBA004A598C /* View */,
-				ABF9585F2260EBB2004A598C /* Controller */,
-			);
-			path = Advertisement;
-			sourceTree = "<group>";
-		};
-		ABF9585F2260EBB2004A598C /* Controller */ = {
+		ABF9590A2267AFB1004A598C /* Advertisement */ = {
 			isa = PBXGroup;
 			children = (
 				ABF958622260EBE5004A598C /* AdViewController.h */,
 				ABF958632260EBE5004A598C /* AdViewController.m */,
 			);
-			path = Controller;
+			path = Advertisement;
 			sourceTree = "<group>";
 		};
-		ABF958602260EBBA004A598C /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		ABF958612260EBC0004A598C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		ABF958652260FEF6004A598C /* RulesViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ABF958682260FF13004A598C /* Model */,
-				ABF958672260FF05004A598C /* View */,
-				ABF958662260FEFF004A598C /* Controller */,
-			);
-			path = RulesViewController;
-			sourceTree = "<group>";
-		};
-		ABF958662260FEFF004A598C /* Controller */ = {
+		ABF9590B2267AFDD004A598C /* Rules */ = {
 			isa = PBXGroup;
 			children = (
 				ABF958692260FF2B004A598C /* RulesViewController.h */,
 				ABF9586A2260FF2B004A598C /* RulesViewController.m */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		ABF958672260FF05004A598C /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		ABF958682260FF13004A598C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = Rules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,8 +268,11 @@
 				AB0A36BA225B902200DAB08C /* SberPongTableView.m in Sources */,
 				ABF958642260EBE5004A598C /* AdViewController.m in Sources */,
 				ABF9586B2260FF2B004A598C /* RulesViewController.m in Sources */,
-				AB0A36B0225B532500DAB08C /* GameViewController.m in Sources */,
+				ABF958F1226777E3004A598C /* SberPongAssembly.m in Sources */,
+				AB0A36B0225B532500DAB08C /* SberPongMainView.m in Sources */,
+				ABF9590622678B8A004A598C /* PresenterSberPong.m in Sources */,
 				AB0A36B6225B7CCD00DAB08C /* StatsViewController.m in Sources */,
+				ABF9590222678953004A598C /* GameSberPong.m in Sources */,
 				AB0A36B3225B7C3F00DAB08C /* SettingsViewController.m in Sources */,
 				AB0A36A7225B457300DAB08C /* main.m in Sources */,
 				ABF958BB2265E627004A598C /* SberPongColor.m in Sources */,

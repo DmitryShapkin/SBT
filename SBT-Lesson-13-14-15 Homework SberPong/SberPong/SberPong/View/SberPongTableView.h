@@ -28,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIView *paddleTop;
 @property (nonatomic, strong) UIView *paddleBottom;
 @property (nonatomic, strong) UIView *messageView;
-@property (nonatomic, assign) BOOL isFlipped;
 @property (nonatomic, weak) id <StartNewGameProtocol> delegate;
+@property (nonatomic, assign) BOOL isFlipped;
 
 @end
 

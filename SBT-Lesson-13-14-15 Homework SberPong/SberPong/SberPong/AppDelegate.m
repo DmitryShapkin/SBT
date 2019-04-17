@@ -9,10 +9,11 @@
 
 #import "AppDelegate.h"
 #import "SettingsViewController.h"
-#import "GameViewController.h"
+#import "SberPongMainView.h"
 #import "StatsViewController.h"
 #import "RulesViewController.h"
 #import "AdViewController.h"
+#import "SberPongAssembly.h"
 
 
 @interface AppDelegate ()
@@ -47,7 +48,7 @@
     statsViewController.tabBarItem.title = @"Рейтинг";
     statsViewController.tabBarItem.image = [UIImage imageNamed:@"stats"];
     
-    GameViewController *gameViewController = [[GameViewController alloc] init];
+    UIViewController *gameViewController = [SberPongAssembly assemblySberPong];
     gameViewController.tabBarItem.title = @"Играть";
     gameViewController.tabBarItem.image = [UIImage imageNamed:@"paddle"];
     
