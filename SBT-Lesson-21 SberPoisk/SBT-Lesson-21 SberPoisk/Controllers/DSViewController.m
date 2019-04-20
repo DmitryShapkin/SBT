@@ -172,7 +172,7 @@
 
 - (void)sheduleLocalNotification
 {
-    NSString *identifier = @"NotificationId";
+    NSString *identifier = @"DSNotificationId";
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
     content.title = @"Напоминание!";
     content.body = [NSString stringWithFormat:@"Вы давно не искали %@", _lastSearchQuery];
@@ -210,7 +210,7 @@
                            };
     content.userInfo = dict;
     UNNotificationTrigger *whateverTrigger = [self intervalTrigger:15];
-    NSString *identifier = @"NotificationIdSecond";
+    NSString *identifier = @"DSNotificationIdSecond";
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
                                                                           content:content trigger:whateverTrigger];
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
