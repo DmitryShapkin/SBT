@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DSViewController.h
 //  SBT-Lesson-21 SberPoisk
 //
 //  Created by Dmitry Shapkin on 19/04/2019.
@@ -10,7 +10,10 @@
 @import UIKit;
 
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
+
+@interface DSViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

@@ -7,23 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB1254B82269FD1500BF6407 /* SberColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1254B72269FD1500BF6407 /* SberColor.m */; };
+		AB1254C1226A3FA200BF6407 /* DSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1254C0226A3FA200BF6407 /* DSImageViewController.m */; };
+		AB1254F0226B869200BF6407 /* sberCat.png in Resources */ = {isa = PBXBuildFile; fileRef = AB1254E9226B869200BF6407 /* sberCat.png */; };
+		AB1254F1226B869200BF6407 /* logoSber.png in Resources */ = {isa = PBXBuildFile; fileRef = AB1254EA226B869200BF6407 /* logoSber.png */; };
+		AB1254F5226B869200BF6407 /* logoSber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB1254EE226B869200BF6407 /* logoSber@2x.png */; };
+		AB1254F6226B869200BF6407 /* logoSber@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB1254EF226B869200BF6407 /* logoSber@3x.png */; };
 		ABF959662269C470004A598C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF959652269C470004A598C /* AppDelegate.m */; };
-		ABF959692269C470004A598C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF959682269C470004A598C /* ViewController.m */; };
 		ABF9596E2269C475004A598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABF9596D2269C475004A598C /* Assets.xcassets */; };
 		ABF959712269C475004A598C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF9596F2269C475004A598C /* LaunchScreen.storyboard */; };
 		ABF959742269C475004A598C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF959732269C475004A598C /* main.m */; };
+		ABF959802269C84F004A598C /* DSDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF9597F2269C84F004A598C /* DSDataSource.m */; };
+		ABF959832269CC5B004A598C /* DSFlickrClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF959822269CC5B004A598C /* DSFlickrClient.m */; };
+		ABF959862269CD28004A598C /* DSPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF959852269CD28004A598C /* DSPhoto.m */; };
+		ABF9598C2269CDCD004A598C /* DSPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF9598B2269CDCD004A598C /* DSPhotoCollectionViewCell.m */; };
+		ABF9598F2269CE28004A598C /* DSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF9598E2269CE28004A598C /* DSViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB1254B62269FD1500BF6407 /* SberColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SberColor.h; sourceTree = "<group>"; };
+		AB1254B72269FD1500BF6407 /* SberColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SberColor.m; sourceTree = "<group>"; };
+		AB1254BF226A3FA200BF6407 /* DSImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSImageViewController.h; sourceTree = "<group>"; };
+		AB1254C0226A3FA200BF6407 /* DSImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSImageViewController.m; sourceTree = "<group>"; };
+		AB1254E9226B869200BF6407 /* sberCat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sberCat.png; sourceTree = "<group>"; };
+		AB1254EA226B869200BF6407 /* logoSber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoSber.png; sourceTree = "<group>"; };
+		AB1254EE226B869200BF6407 /* logoSber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoSber@2x.png"; sourceTree = "<group>"; };
+		AB1254EF226B869200BF6407 /* logoSber@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logoSber@3x.png"; sourceTree = "<group>"; };
 		ABF959612269C470004A598C /* SBT-Lesson-21 SberPoisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SBT-Lesson-21 SberPoisk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF959642269C470004A598C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ABF959652269C470004A598C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		ABF959672269C470004A598C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		ABF959682269C470004A598C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		ABF9596D2269C475004A598C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABF959702269C475004A598C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABF959722269C475004A598C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABF959732269C475004A598C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ABF9597E2269C84F004A598C /* DSDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDataSource.h; sourceTree = "<group>"; };
+		ABF9597F2269C84F004A598C /* DSDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDataSource.m; sourceTree = "<group>"; };
+		ABF959812269CC5B004A598C /* DSFlickrClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSFlickrClient.h; sourceTree = "<group>"; };
+		ABF959822269CC5B004A598C /* DSFlickrClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSFlickrClient.m; sourceTree = "<group>"; };
+		ABF959842269CD28004A598C /* DSPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPhoto.h; sourceTree = "<group>"; };
+		ABF959852269CD28004A598C /* DSPhoto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPhoto.m; sourceTree = "<group>"; };
+		ABF9598A2269CDCD004A598C /* DSPhotoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		ABF9598B2269CDCD004A598C /* DSPhotoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		ABF9598D2269CE27004A598C /* DSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSViewController.h; sourceTree = "<group>"; };
+		ABF9598E2269CE28004A598C /* DSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +63,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB1254E8226B869100BF6407 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AB1254E9226B869200BF6407 /* sberCat.png */,
+				AB1254EA226B869200BF6407 /* logoSber.png */,
+				AB1254EE226B869200BF6407 /* logoSber@2x.png */,
+				AB1254EF226B869200BF6407 /* logoSber@3x.png */,
+			);
+			name = Images;
+			path = "SBT-Lesson-21 SberPoisk/Images";
+			sourceTree = SOURCE_ROOT;
+		};
 		ABF959582269C470004A598C = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +94,11 @@
 		ABF959632269C470004A598C /* SBT-Lesson-21 SberPoisk */ = {
 			isa = PBXGroup;
 			children = (
-				ABF9597C2269C513004A598C /* Controllers */,
-				ABF9597B2269C50E004A598C /* Views */,
 				ABF9597A2269C508004A598C /* Models */,
-				ABF959642269C470004A598C /* AppDelegate.h */,
-				ABF959652269C470004A598C /* AppDelegate.m */,
-				ABF9596D2269C475004A598C /* Assets.xcassets */,
-				ABF9596F2269C475004A598C /* LaunchScreen.storyboard */,
-				ABF959722269C475004A598C /* Info.plist */,
-				ABF959732269C475004A598C /* main.m */,
+				ABF9597B2269C50E004A598C /* Views */,
+				ABF9597C2269C513004A598C /* Controllers */,
+				ABF9597D2269C70D004A598C /* FlickrFiles */,
+				ABF959902269CF2C004A598C /* SupportingFiles */,
 			);
 			path = "SBT-Lesson-21 SberPoisk";
 			sourceTree = "<group>";
@@ -72,6 +106,8 @@
 		ABF9597A2269C508004A598C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ABF959842269CD28004A598C /* DSPhoto.h */,
+				ABF959852269CD28004A598C /* DSPhoto.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -79,6 +115,8 @@
 		ABF9597B2269C50E004A598C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ABF9598A2269CDCD004A598C /* DSPhotoCollectionViewCell.h */,
+				ABF9598B2269CDCD004A598C /* DSPhotoCollectionViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -86,10 +124,39 @@
 		ABF9597C2269C513004A598C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				ABF959672269C470004A598C /* ViewController.h */,
-				ABF959682269C470004A598C /* ViewController.m */,
+				ABF959642269C470004A598C /* AppDelegate.h */,
+				ABF959652269C470004A598C /* AppDelegate.m */,
+				ABF9598D2269CE27004A598C /* DSViewController.h */,
+				ABF9598E2269CE28004A598C /* DSViewController.m */,
+				AB1254BF226A3FA200BF6407 /* DSImageViewController.h */,
+				AB1254C0226A3FA200BF6407 /* DSImageViewController.m */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ABF9597D2269C70D004A598C /* FlickrFiles */ = {
+			isa = PBXGroup;
+			children = (
+				ABF9597E2269C84F004A598C /* DSDataSource.h */,
+				ABF9597F2269C84F004A598C /* DSDataSource.m */,
+				ABF959812269CC5B004A598C /* DSFlickrClient.h */,
+				ABF959822269CC5B004A598C /* DSFlickrClient.m */,
+			);
+			path = FlickrFiles;
+			sourceTree = "<group>";
+		};
+		ABF959902269CF2C004A598C /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				AB1254E8226B869100BF6407 /* Images */,
+				AB1254B62269FD1500BF6407 /* SberColor.h */,
+				AB1254B72269FD1500BF6407 /* SberColor.m */,
+				ABF9596D2269C475004A598C /* Assets.xcassets */,
+				ABF9596F2269C475004A598C /* LaunchScreen.storyboard */,
+				ABF959722269C475004A598C /* Info.plist */,
+				ABF959732269C475004A598C /* main.m */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +216,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1254F1226B869200BF6407 /* logoSber.png in Resources */,
+				AB1254F6226B869200BF6407 /* logoSber@3x.png in Resources */,
+				AB1254F5226B869200BF6407 /* logoSber@2x.png in Resources */,
+				AB1254F0226B869200BF6407 /* sberCat.png in Resources */,
 				ABF959712269C475004A598C /* LaunchScreen.storyboard in Resources */,
 				ABF9596E2269C475004A598C /* Assets.xcassets in Resources */,
 			);
@@ -161,9 +232,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABF959692269C470004A598C /* ViewController.m in Sources */,
 				ABF959742269C475004A598C /* main.m in Sources */,
+				AB1254C1226A3FA200BF6407 /* DSImageViewController.m in Sources */,
+				AB1254B82269FD1500BF6407 /* SberColor.m in Sources */,
+				ABF9598C2269CDCD004A598C /* DSPhotoCollectionViewCell.m in Sources */,
+				ABF9598F2269CE28004A598C /* DSViewController.m in Sources */,
 				ABF959662269C470004A598C /* AppDelegate.m in Sources */,
+				ABF959862269CD28004A598C /* DSPhoto.m in Sources */,
+				ABF959832269CC5B004A598C /* DSFlickrClient.m in Sources */,
+				ABF959802269C84F004A598C /* DSDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N52WYVQTKK;
-				INFOPLIST_FILE = "SBT-Lesson-21 SberPoisk/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SBT-Lesson-21 SberPoisk/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,7 +393,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N52WYVQTKK;
-				INFOPLIST_FILE = "SBT-Lesson-21 SberPoisk/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SBT-Lesson-21 SberPoisk/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
