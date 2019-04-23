@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Soldier : NSObject <MilitaryChain>
 
 @property (nonatomic, assign) NSInteger strength;
-@property (nonatomic, strong) id<MilitaryChain> nextRank;
+@property (nonatomic, nullable, strong) id<MilitaryChain> nextRank;
 
 @end
 

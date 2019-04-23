@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol MilitaryChain <NSObject>
 
 @property (nonatomic, assign) NSInteger strength;
-@property (nonatomic, strong) id<MilitaryChain> nextRank;
+@property (nonatomic, nullable, strong) id<MilitaryChain> nextRank;
 
 - (void)shouldDefeatWithStrength:(NSInteger)amount;
 
