@@ -37,6 +37,11 @@
     return [UIColor colorWithRed:240.0/255.0 green:243.0/255.0 blue:252.0/255.0 alpha:1];
 }
 
++ (UIColor *)superLightGraySberColor
+{
+    return [UIColor colorWithRed:245.0/255.0 green:248.0/255.0 blue:253.0/255.0 alpha:1];
+}
+
 + (UIColor *)darkGraySberColor
 {
     return [UIColor colorWithRed:125.0/255.0 green:129.0/255.0 blue:140.0/255.0 alpha:1];

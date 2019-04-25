@@ -14,9 +14,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DSPhotoCollectionViewCell : UICollectionViewCell
+@interface DSPhotoCollectionViewCell : UICollectionViewCell <NSURLSessionDelegate, NSURLSessionDownloadDelegate>
 
-@property (nonatomic, strong) DSPhoto *photo;
+@property (nonatomic, nullable, strong) DSPhoto *photo;
 
 @end
 

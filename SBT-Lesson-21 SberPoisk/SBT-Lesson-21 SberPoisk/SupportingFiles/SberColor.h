@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)grayGreenSberColor;
 + (UIColor *)graySberColor;
 + (UIColor *)lightGraySberColor;
++ (UIColor *)superLightGraySberColor;
 + (UIColor *)darkGraySberColor;
 + (UIColor *)orangeSberColor;
 + (UIColor *)redSberColor;
