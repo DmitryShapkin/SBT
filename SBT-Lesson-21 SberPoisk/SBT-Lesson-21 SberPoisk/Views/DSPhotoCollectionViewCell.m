@@ -71,7 +71,8 @@
 - (void)setPhoto:(DSPhoto *)photo
 {
     self.progressView.hidden = NO;
-    _photo = photo;
+    _photo = photo; /**< используем iVar, потому что Сеттер, иначе будет цикл */
+    
     if (!photo || !photo.url.length)
     {
         return;

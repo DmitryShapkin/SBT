@@ -28,7 +28,7 @@ extern NSString *const DSCellIdentifier;
 @interface DSDataSource : NSObject <UICollectionViewDataSource, UICollectionViewDelegate>
 
 /** Массив картинок, которые будут показаны в CollectionView */
-@property (nonatomic, copy) NSMutableArray<DSPhoto *> *photos;
+@property (nonatomic, strong) NSMutableArray<DSPhoto *> *photos;
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, weak) id<CollectionViewItemDelegate> delegate;
 

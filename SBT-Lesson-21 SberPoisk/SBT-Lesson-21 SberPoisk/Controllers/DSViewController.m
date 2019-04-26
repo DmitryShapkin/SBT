@@ -64,23 +64,23 @@
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15);
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    [_collectionView registerClass:[DSPhotoCollectionViewCell class]
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    [self.collectionView registerClass:[DSPhotoCollectionViewCell class]
         forCellWithReuseIdentifier:DSCellIdentifier];
-    _flickrDataSource = [[DSDataSource alloc] initWithWidth:screenWidth];
-    _flickrDataSource.collectionView = _collectionView;
-    _flickrDataSource.delegate = self;
-    _collectionView.dataSource = _flickrDataSource;
-    _collectionView.delegate = _flickrDataSource;
-    [_collectionView setBackgroundColor:[UIColor whiteColor]];
+    self.flickrDataSource = [[DSDataSource alloc] initWithWidth:screenWidth];
+    self.flickrDataSource.collectionView = self.collectionView;
+    self.flickrDataSource.delegate = self;
+    self.collectionView.dataSource = self.flickrDataSource;
+    self.collectionView.delegate = self.flickrDataSource;
+    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
     
-    [self.view addSubview:_collectionView];
-    _collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.collectionView];
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     [NSLayoutConstraint activateConstraints:@[
-          [_collectionView.topAnchor constraintEqualToAnchor:self.searchBar.bottomAnchor],
-          [_collectionView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
-          [_collectionView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
-          [_collectionView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
+          [self.collectionView.topAnchor constraintEqualToAnchor:self.searchBar.bottomAnchor],
+          [self.collectionView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+          [self.collectionView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+          [self.collectionView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
     ]];
 }
 
@@ -88,9 +88,9 @@
 {
     if ([self checkEnglishLetters])
     {
-        [_flickrDataSource showPicturesWithQuery:self.searchBar.text];
-        [_searchBar endEditing:YES];
-        _lastSearchQuery = _searchBar.text;
+        [self.flickrDataSource showPicturesWithQuery:self.searchBar.text];
+        [self.searchBar endEditing:YES];
+        self.lastSearchQuery = self.searchBar.text;
     }
     else
     {
@@ -166,7 +166,10 @@
 - (void)sendPush
 {
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    [self sheduleLocalNotification];
+    if (self.lastSearchQuery) /**< Выполним первый пуш только если был какой-либо запрос от пользователя */
+    {
+        [self sheduleLocalNotification];
+    }
     [self sheduleLocalNotificationSecond];
 }
 
@@ -175,8 +178,8 @@
     NSString *identifier = @"DSNotificationId";
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
     content.title = @"Напоминание!";
-    content.body = [NSString stringWithFormat:@"Вы давно не искали %@", _lastSearchQuery];
-    NSDictionary *dict = @{@"query": [NSString stringWithFormat:@"%@", _lastSearchQuery]};
+    content.body = [NSString stringWithFormat:@"Вы давно не искали %@", self.lastSearchQuery];
+    NSDictionary *dict = @{@"query": [NSString stringWithFormat:@"%@", self.lastSearchQuery]};
     content.userInfo = dict;
     content.sound = [UNNotificationSound defaultSound];
     content.badge = @([self giveNewBadgeNumber] + 1);
@@ -261,7 +264,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     {
         [self.navigationController popToRootViewControllerAnimated:YES];
         NSString *query = content.userInfo[@"query"];
-        _searchBar.text = query;
+        self.searchBar.text = query;
         [self startSearch];
     }
     

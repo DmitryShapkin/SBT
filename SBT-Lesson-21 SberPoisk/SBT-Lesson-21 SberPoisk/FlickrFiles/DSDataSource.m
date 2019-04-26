@@ -53,18 +53,18 @@ NSString *const DSCellIdentifier = @"DSCellIdentifier";
 
 - (void)showPicturesWithQuery:(NSString *)query
 {
-    if (!_client)
+    if (!self.client)
     {
-        _client = [[DSFlickrClient alloc] initWithDelegate:self];
+        self.client = [[DSFlickrClient alloc] initWithDelegate:self];
     }
     
-    _photos = [NSMutableArray array];
-    _query = query;
+    self.photos = [NSMutableArray array];
+    self.query = query;
     
-    [_collectionView reloadData];
-    _isLoading = YES;
-    [_client fetchWithQuery:_query];
-    _lastLoadedPage = 1;
+    [self.collectionView reloadData];
+    self.isLoading = YES;
+    [self.client fetchWithQuery:self.query];
+    self.lastLoadedPage = 1;
 }
 
 
@@ -76,22 +76,22 @@ NSString *const DSCellIdentifier = @"DSCellIdentifier";
     [collectionView dequeueReusableCellWithReuseIdentifier:DSCellIdentifier
                                               forIndexPath:indexPath];
     
-    if (indexPath.item < _photos.count)
+    if (indexPath.item < self.photos.count)
     {
-        cell.photo = _photos[indexPath.item];
+        cell.photo = self.photos[indexPath.item];
     }
     
-    if (indexPath.item == _photos.count - 1)
+    if (indexPath.item == self.photos.count - 1)
     {
         /**
          Последний элемент-картинка на странице запускает загрузку новой страницы
          Спасибо stackoverflow ^_^
          */
-        if (_query.length && !_isLoading)
+        if (self.query.length && !self.isLoading)
         {
-            _isLoading = YES;
-            _lastLoadedPage++;
-            [_client fetchWithQuery:_query page:_lastLoadedPage];
+            self.isLoading = YES;
+            self.lastLoadedPage++;
+            [self.client fetchWithQuery:self.query page:self.lastLoadedPage];
         }
     }
     
@@ -100,14 +100,14 @@ NSString *const DSCellIdentifier = @"DSCellIdentifier";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return _photos.count;
+    return self.photos.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize itemSize = CGSizeMake(_itemWidth, _itemHeight);
+    CGSize itemSize = CGSizeMake(self.itemWidth, self.itemHeight);
     return itemSize;
 }
 
