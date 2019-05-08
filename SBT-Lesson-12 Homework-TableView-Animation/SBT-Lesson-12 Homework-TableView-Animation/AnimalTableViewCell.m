@@ -81,4 +81,5 @@
         [self.subtitileLabel.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-15]
     ]];
 }
+
 @end

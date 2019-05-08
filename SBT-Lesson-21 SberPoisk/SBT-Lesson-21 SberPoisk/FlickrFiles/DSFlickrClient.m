@@ -36,14 +36,21 @@ static NSString *const kFlickrURL =
 
 - (void)fetchWithQuery:(NSString *)query page:(int)page
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *pageString = [NSString stringWithFormat:@"%d", page];
-        NSString *urlString = [NSString stringWithFormat:kFlickrURL, query, pageString];
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
-        NSError *error;
-        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:data
-                                                                    options:kNilOptions
-                                                                      error:&error];
+    NSString *pageString = [NSString stringWithFormat:@"%d", page];
+    NSString *urlString = [NSString stringWithFormat:kFlickrURL, query, pageString];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString: urlString]];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setTimeoutInterval:15];
+    
+    NSURLSession *session;
+    session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        
         if (error)
         {
             // TODO: Обработать ошибку
@@ -61,9 +68,12 @@ static NSString *const kFlickrURL =
             photo.height = [photoJson[@"height_s"] doubleValue];
             [searchResults addObject:photo];
         }
-        
-        [self.delegate didReceiveSearchResults:searchResults];
-    });
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate didReceiveSearchResults:searchResults];
+        });
+    }];
+    [sessionDataTask resume];
 }
 
 @end

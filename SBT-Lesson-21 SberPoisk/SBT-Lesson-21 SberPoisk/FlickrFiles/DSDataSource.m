@@ -113,7 +113,6 @@ NSString *const DSCellIdentifier = @"DSCellIdentifier";
 
 - (void)didReceiveSearchResults:(NSMutableArray<DSPhoto *> *)results
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
         self.isLoading = NO;
         NSMutableArray<NSIndexPath *> *indexPaths = [NSMutableArray array];
         for (int i = (int)self.photos.count; i < self.photos.count + results.count; ++i)
@@ -124,7 +123,6 @@ NSString *const DSCellIdentifier = @"DSCellIdentifier";
         
         [self.photos addObjectsFromArray:results];
         [self.collectionView insertItemsAtIndexPaths:indexPaths];
-    });
 }
 
 
